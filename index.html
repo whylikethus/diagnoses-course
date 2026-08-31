@@ -1,141 +1,118 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>××‘×—× ×•×ª ×•×¡×™× ×“×¨×•×ž×™× â€” ×©× ×” ×‘×³ 25-26</title>
+  <title>&#1488;&#1489;&#1495;&#1504;&#1493;&#1514; &#1493;&#1505;&#1497;&#1504;&#1491;&#1512;&#1493;&#1502;&#1497;&#1501; &#8212; &#1513;&#1504;&#1492; &#1489;&#1468;&#1497; 25-26</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <script src="course-data.js"></script>
   <style>
-    :root {
-      --bg:#0a0e1a;--surface:#111827;--card:#1a2235;
-      --border:rgba(99,179,237,0.15);--accent:#63b3ed;--accent2:#9f7aea;
-      --gold:#f6d860;--text:#e2e8f0;--muted:#718096;--sidebar-w:330px;
-    }
+    :root{--bg:#0a0e1a;--surface:#111827;--card:#1a2235;--border:rgba(99,179,237,0.15);
+      --accent:#63b3ed;--accent2:#9f7aea;--gold:#f6d860;--text:#e2e8f0;--muted:#718096;--sw:330px;}
     *{margin:0;padding:0;box-sizing:border-box;}
-    body{font-family:'Heebo',sans-serif;background:var(--bg);color:var(--text);
-         height:100vh;display:flex;flex-direction:column;overflow:hidden;}
-
-    /* HEADER */
-    header{background:linear-gradient(135deg,#0d1b3e 0%,#1a0a3e 100%);
-           border-bottom:1px solid var(--border);padding:0 24px;height:64px;
-           display:flex;align-items:center;gap:16px;flex-shrink:0;z-index:10;
-           box-shadow:0 4px 24px rgba(0,0,0,0.4);}
+    body{font-family:'Heebo',sans-serif;background:var(--bg);color:var(--text);height:100vh;display:flex;flex-direction:column;overflow:hidden;}
+    header{background:linear-gradient(135deg,#0d1b3e,#1a0a3e);border-bottom:1px solid var(--border);
+      padding:0 24px;height:64px;display:flex;align-items:center;gap:16px;flex-shrink:0;
+      box-shadow:0 4px 24px rgba(0,0,0,.4);z-index:10;}
     .logo{width:38px;height:38px;background:linear-gradient(135deg,var(--accent),var(--accent2));
-          border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;}
+      border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
     header h1{font-size:16px;font-weight:700;background:linear-gradient(135deg,var(--accent),var(--accent2));
-              -webkit-background-clip:text;-webkit-text-fill-color:transparent;flex:1;}
-    .search-wrap{position:relative;width:210px;}
-    .search-wrap input{width:100%;background:rgba(255,255,255,0.07);border:1px solid var(--border);
-      border-radius:24px;padding:7px 16px 7px 36px;color:var(--text);font-family:'Heebo',sans-serif;
-      font-size:13px;outline:none;transition:border-color .2s;}
-    .search-wrap input:focus{border-color:var(--accent);}
-    .search-wrap svg{position:absolute;left:11px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none;}
-    .badge{background:rgba(99,179,237,0.12);border:1px solid rgba(99,179,237,0.25);
-           border-radius:20px;padding:4px 12px;font-size:12px;color:var(--accent);white-space:nowrap;}
-
-    /* LAYOUT */
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;flex:1;}
+    .sw{position:relative;width:210px;}
+    .sw input{width:100%;background:rgba(255,255,255,.07);border:1px solid var(--border);border-radius:24px;
+      padding:7px 16px 7px 36px;color:var(--text);font-family:'Heebo',sans-serif;font-size:13px;outline:none;transition:border-color .2s;}
+    .sw input:focus{border-color:var(--accent);}
+    .sw svg{position:absolute;left:11px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none;}
+    .badge{background:rgba(99,179,237,.12);border:1px solid rgba(99,179,237,.25);border-radius:20px;
+      padding:4px 12px;font-size:12px;color:var(--accent);white-space:nowrap;}
     .main{display:flex;flex:1;overflow:hidden;}
-
-    /* SIDEBAR */
-    aside{width:var(--sidebar-w);background:var(--surface);border-left:1px solid var(--border);
-          display:flex;flex-direction:column;overflow:hidden;flex-shrink:0;}
-    .sidebar-inner{overflow-y:auto;flex:1;padding:8px 0 24px;scrollbar-width:thin;scrollbar-color:var(--border) transparent;}
+    aside{width:var(--sw);background:var(--surface);border-left:1px solid var(--border);display:flex;flex-direction:column;overflow:hidden;flex-shrink:0;}
+    .si{overflow-y:auto;flex:1;padding:8px 0 24px;scrollbar-width:thin;scrollbar-color:var(--border) transparent;}
     .chapter{margin-bottom:2px;}
-    .ch-hdr{display:flex;align-items:center;gap:10px;padding:10px 16px;cursor:pointer;
-            user-select:none;transition:background .15s;}
-    .ch-hdr:hover{background:rgba(99,179,237,0.06);}
-    .ch-icon{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;
-             font-size:14px;flex-shrink:0;background:linear-gradient(135deg,var(--accent),var(--accent2));}
-    .ch-name{font-size:12.5px;font-weight:600;color:var(--text);flex:1;line-height:1.3;}
-    .ch-count{font-size:11px;color:var(--muted);background:rgba(255,255,255,0.05);border-radius:10px;padding:2px 7px;}
-    .chevron{color:var(--muted);transition:transform .25s;flex-shrink:0;}
-    .chapter.open .chevron{transform:rotate(90deg);}
-    .lesson-list{overflow:hidden;max-height:0;transition:max-height .3s ease;}
-    .chapter.open .lesson-list{max-height:3000px;}
-    .lesson-item{display:flex;align-items:center;gap:10px;padding:7px 16px 7px 28px;cursor:pointer;
-                 transition:background .15s;position:relative;}
-    .lesson-item:hover{background:rgba(99,179,237,0.08);}
-    .lesson-item.active{background:rgba(99,179,237,0.14);}
-    .lesson-item.active::after{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;
+    .ch{display:flex;align-items:center;gap:10px;padding:10px 16px;cursor:pointer;user-select:none;transition:background .15s;}
+    .ch:hover{background:rgba(99,179,237,.06);}
+    .ci{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;
+      font-size:14px;flex-shrink:0;background:linear-gradient(135deg,var(--accent),var(--accent2));}
+    .cn{font-size:12.5px;font-weight:600;color:var(--text);flex:1;line-height:1.3;}
+    .cc{font-size:11px;color:var(--muted);background:rgba(255,255,255,.05);border-radius:10px;padding:2px 7px;}
+    .cv{color:var(--muted);transition:transform .25s;flex-shrink:0;}
+    .chapter.open .cv{transform:rotate(90deg);}
+    .ll{overflow:hidden;max-height:0;transition:max-height .35s ease;}
+    .chapter.open .ll{max-height:3000px;}
+    .li{display:flex;align-items:center;gap:10px;padding:7px 16px 7px 28px;cursor:pointer;transition:background .15s;position:relative;}
+    .li:hover{background:rgba(99,179,237,.08);}
+    .li.active{background:rgba(99,179,237,.14);}
+    .li.active::after{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;
       background:linear-gradient(to bottom,var(--accent),var(--accent2));border-radius:0 3px 3px 0;}
-    .pdf-badge{width:26px;height:26px;background:rgba(239,68,68,0.15);border:1px solid rgba(239,68,68,0.3);
-               border-radius:6px;display:flex;align-items:center;justify-content:center;
-               font-size:9px;color:#fc8181;flex-shrink:0;font-weight:800;letter-spacing:-.5px;}
-    .l-name{font-size:12px;color:#cbd5e0;line-height:1.3;flex:1;}
-    .lesson-item.active .l-name{color:var(--accent);}
-    .l-size{font-size:10px;color:var(--muted);white-space:nowrap;}
-
-    /* VIEWER */
+    .pb{width:26px;height:26px;background:rgba(239,68,68,.15);border:1px solid rgba(239,68,68,.3);
+      border-radius:6px;display:flex;align-items:center;justify-content:center;
+      font-size:9px;color:#fc8181;flex-shrink:0;font-weight:800;letter-spacing:-.5px;}
+    .ln{font-size:12px;color:#cbd5e0;line-height:1.3;flex:1;}
+    .li.active .ln{color:var(--accent);}
+    .ls{font-size:10px;color:var(--muted);white-space:nowrap;}
     .viewer{flex:1;display:flex;flex-direction:column;overflow:hidden;background:#0d1117;}
-    .viewer-bar{background:var(--card);border-bottom:1px solid var(--border);padding:10px 20px;
-                display:flex;align-items:center;gap:12px;flex-shrink:0;}
-    .viewer-title{font-size:13px;font-weight:600;color:var(--text);flex:1;}
-    .btn{display:flex;align-items:center;gap:6px;background:rgba(99,179,237,0.1);
-         border:1px solid rgba(99,179,237,0.25);border-radius:8px;padding:6px 14px;
-         color:var(--accent);font-family:'Heebo',sans-serif;font-size:12px;cursor:pointer;
-         transition:all .2s;text-decoration:none;}
-    .btn:hover{background:rgba(99,179,237,0.2);border-color:var(--accent);}
-    #pdf-frame{flex:1;border:none;width:100%;}
-
-    /* WELCOME */
-    .welcome{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
-             gap:20px;padding:40px;text-align:center;}
-    .w-icon{width:90px;height:90px;background:linear-gradient(135deg,rgba(99,179,237,0.15),rgba(159,122,234,0.15));
-            border:1px solid rgba(99,179,237,0.25);border-radius:24px;display:flex;align-items:center;
-            justify-content:center;font-size:44px;animation:float 3s ease-in-out infinite;}
+    .vb{background:var(--card);border-bottom:1px solid var(--border);padding:10px 20px;
+      display:flex;align-items:center;gap:12px;flex-shrink:0;}
+    .vt{font-size:13px;font-weight:600;color:var(--text);flex:1;}
+    .btn{display:flex;align-items:center;gap:6px;background:rgba(99,179,237,.1);
+      border:1px solid rgba(99,179,237,.25);border-radius:8px;padding:6px 14px;
+      color:var(--accent);font-family:'Heebo',sans-serif;font-size:12px;cursor:pointer;transition:all .2s;}
+    .btn:hover{background:rgba(99,179,237,.2);border-color:var(--accent);}
+    #pf{flex:1;border:none;width:100%;}
+    .welcome{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;padding:40px;text-align:center;}
+    .wi{width:90px;height:90px;background:linear-gradient(135deg,rgba(99,179,237,.15),rgba(159,122,234,.15));
+      border:1px solid rgba(99,179,237,.25);border-radius:24px;display:flex;align-items:center;
+      justify-content:center;font-size:44px;animation:float 3s ease-in-out infinite;}
     @keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
     .welcome h2{font-size:24px;font-weight:800;background:linear-gradient(135deg,var(--accent),var(--accent2));
-                -webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;}
     .welcome p{color:var(--muted);font-size:14px;max-width:380px;line-height:1.7;}
-    .stats-row{display:flex;gap:16px;margin-top:8px;}
-    .stat{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:14px 22px;text-align:center;}
-    .stat .n{font-size:26px;font-weight:800;background:linear-gradient(135deg,var(--accent),var(--gold));
-             -webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-    .stat .l{font-size:11px;color:var(--muted);margin-top:2px;}
-    .no-r{padding:40px 16px;text-align:center;color:var(--muted);font-size:13px;}
+    .sr{display:flex;gap:16px;margin-top:8px;}
+    .sc{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:14px 22px;text-align:center;}
+    .sc .n{font-size:26px;font-weight:800;background:linear-gradient(135deg,var(--accent),var(--gold));
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+    .sc .l{font-size:11px;color:var(--muted);margin-top:2px;}
+    .nr{padding:40px 16px;text-align:center;color:var(--muted);font-size:13px;}
     ::-webkit-scrollbar{width:4px;}
     ::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px;}
   </style>
 </head>
 <body>
-
 <header>
-  <div class="logo">ðŸ¥</div>
-  <h1>××‘×—× ×•×ª ×•×¡×™× ×“×¨×•×ž×™× â€” ×©× ×” ×‘×³ 25â€“26</h1>
-  <div class="search-wrap">
+  <div class="logo">&#x1F3E5;</div>
+  <h1>&#x05D0;&#x05D1;&#x05D7;&#x05E0;&#x05D5;&#x05EA; &#x05D5;&#x05E1;&#x05D9;&#x05E0;&#x05D3;&#x05E8;&#x05D5;&#x05DE;&#x05D9;&#x05DD; &#8212; &#x05E9;&#x05E0;&#x05D4; &#x05D1;&#x05D9; 25&#x2013;26</h1>
+  <div class="sw">
     <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
       <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
     </svg>
-    <input id="search" type="text" placeholder="×—×™×¤×•×© ×©×™×¢×•×¨...">
+    <input id="search" type="text" placeholder="&#x05D7;&#x05D9;&#x05E4;&#x05D5;&#x05E9; &#x05E9;&#x05D9;&#x05E2;&#x05D5;&#x05E8;...">
   </div>
-  <div class="badge" id="badge">×˜×•×¢×Ÿ...</div>
+  <div class="badge" id="badge">&#x05D8;&#x05D5;&#x05E2;&#x05DF;...</div>
 </header>
 
 <div class="main">
-  <aside><div class="sidebar-inner" id="sidebar"></div></aside>
-
+  <aside><div class="si" id="sidebar"></div></aside>
   <div class="viewer" id="viewer">
     <div class="welcome" id="welcome">
-      <div class="w-icon">ðŸ“š</div>
-      <h2>×‘×¨×•×›×™× ×”×‘××™× ×œ×§×•×¨×¡</h2>
-      <p>×‘×—×¨×• ×©×™×¢×•×¨ ×ž×”×¨×©×™×ž×” ×›×“×™ ×œ×¦×¤×•×ª ×‘×• ×™×©×™×¨×•×ª ×‘×“×¤×“×¤×Ÿ</p>
-      <div class="stats-row">
-        <div class="stat"><div class="n" id="s-ch">â€“</div><div class="l">×¤×¨×§×™×</div></div>
-        <div class="stat"><div class="n" id="s-ls">â€“</div><div class="l">×©×™×¢×•×¨×™×</div></div>
+      <div class="wi">&#x1F4DA;</div>
+      <h2>&#x05D1;&#x05E8;&#x05D5;&#x05DB;&#x05D9;&#x05DD; &#x05D4;&#x05D1;&#x05D0;&#x05D9;&#x05DD; &#x05DC;&#x05E7;&#x05D5;&#x05E8;&#x05E1;</h2>
+      <p>&#x05D1;&#x05D7;&#x05E8;&#x05D5; &#x05E9;&#x05D9;&#x05E2;&#x05D5;&#x05E8; &#x05DE;&#x05D4;&#x05E8;&#x05E9;&#x05D9;&#x05DE;&#x05D4; &#x05DB;&#x05D3;&#x05D9; &#x05DC;&#x05E6;&#x05E4;&#x05D5;&#x05EA; &#x05D1;&#x05D5; &#x05D9;&#x05E9;&#x05D9;&#x05E8;&#x05D5;&#x05EA; &#x05D1;&#x05D3;&#x05E4;&#x05D3;&#x05E4;&#x05DF;</p>
+      <div class="sr">
+        <div class="sc"><div class="n" id="s-ch">-</div><div class="l">&#x05E4;&#x05E8;&#x05E7;&#x05D9;&#x05DD;</div></div>
+        <div class="sc"><div class="n" id="s-ls">-</div><div class="l">&#x05E9;&#x05D9;&#x05E2;&#x05D5;&#x05E8;&#x05D9;&#x05DD;</div></div>
       </div>
     </div>
-    <div id="pdf-wrap" style="display:none;flex-direction:column;flex:1;">
-      <div class="viewer-bar">
-        <div class="viewer-title" id="pdf-title">â€”</div>
-        <button class="btn" onclick="goFullscreen()">
+    <div id="pw" style="display:none;flex-direction:column;flex:1;">
+      <div class="vb">
+        <div class="vt" id="pt">-</div>
+        <button class="btn" onclick="goFS()">
           <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/>
-          </svg>×ž×¡×š ×ž×œ×
+          </svg>&#x05DE;&#x05E1;&#x05DA; &#x05DE;&#x05DC;&#x05D0;
         </button>
       </div>
-      <iframe id="pdf-frame" src=""></iframe>
+      <iframe id="pf" src=""></iframe>
     </div>
   </div>
 </div>
@@ -146,9 +123,9 @@ let totalL = 0;
 data.forEach(c => totalL += c.lessons.length);
 document.getElementById('s-ch').textContent = data.length;
 document.getElementById('s-ls').textContent = totalL;
-document.getElementById('badge').textContent = totalL + ' ×©×™×¢×•×¨×™×';
+document.getElementById('badge').textContent = totalL + ' \u05E9\u05D9\u05E2\u05D5\u05E8\u05D9\u05DD';
 
-const icons = ['ðŸ«','ðŸ“‹','ðŸ§ ','âš•ï¸','ðŸŒ¿','ðŸ’Š','ðŸ”¬','ðŸ“–','ðŸ¥','ðŸŒ™','ðŸ§¬','â¤ï¸'];
+const icons = ['\uD83E\uDEB7','\uD83D\uDCCB','\uD83E\uDDE0','\u2695\uFE0F','\uD83C\uDF3F','\uD83D\uDC8A','\uD83D\uDD2C','\uD83D\uDCDA','\uD83C\uDFE5','\uD83C\uDF19','\uD83E\uDDEC','\u2764\uFE0F'];
 
 function buildSidebar(q) {
   const sb = document.getElementById('sidebar');
@@ -159,45 +136,44 @@ function buildSidebar(q) {
     if (!ls.length) return;
     any = true;
     const d = document.createElement('div');
-    d.className = 'chapter' + (ci===0||q?' open':'');
+    d.className = 'chapter' + (ci === 0 || q ? ' open' : '');
     d.innerHTML =
-      '<div class="ch-hdr" onclick="this.parentElement.classList.toggle(\'open\')">' +
-        '<div class="ch-icon">'+icons[ci%icons.length]+'</div>' +
-        '<div class="ch-name">'+ch.name+'</div>' +
-        '<div class="ch-count">'+ls.length+'</div>' +
-        '<svg class="chevron" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>' +
+      '<div class="ch" onclick="this.parentElement.classList.toggle(\'open\')">' +
+        '<div class="ci">' + (icons[ci % icons.length]) + '</div>' +
+        '<div class="cn">' + ch.name + '</div>' +
+        '<div class="cc">' + ls.length + '</div>' +
+        '<svg class="cv" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>' +
       '</div>' +
-      '<div class="lesson-list">' +
+      '<div class="ll">' +
         ls.map(l =>
-          '<div class="lesson-item" onclick="openPDF(this,\''+l.file+'\',\''+l.name.replace(/'/g,'')+'\')" data-file="'+l.file+'">' +
-            '<div class="pdf-badge">PDF</div>' +
-            '<div class="l-name">'+l.name+'</div>' +
-            '<div class="l-size">'+l.sizeMB+'MB</div>' +
+          '<div class="li" onclick="openPDF(this,\'' + encodeURIComponent(l.file) + '\',\'' + l.name.replace(/'/g, '&#39;') + '\')" data-file="' + l.file + '">' +
+            '<div class="pb">PDF</div>' +
+            '<div class="ln">' + l.name + '</div>' +
+            '<div class="ls">' + l.sizeMB + 'MB</div>' +
           '</div>'
         ).join('') +
       '</div>';
     sb.appendChild(d);
   });
-  if (!any) sb.innerHTML = '<div class="no-r">×œ× × ×ž×¦××• ×ª×•×¦××•×ª ðŸ”</div>';
+  if (!any) sb.innerHTML = '<div class="nr">\u05DC\u05D0 \u05E0\u05DE\u05E6\u05D0\u05D5 \u05EA\u05D5\u05E6\u05D0\u05D5\u05EA \uD83D\uDD0D</div>';
 }
 
 let active = null;
-function openPDF(el, file, name) {
+function openPDF(el, fileEnc, name) {
   if (active) active.classList.remove('active');
   el.classList.add('active');
   active = el;
   document.getElementById('welcome').style.display = 'none';
-  const w = document.getElementById('pdf-wrap');
-  w.style.display = 'flex';
-  document.getElementById('pdf-title').textContent = name;
-  // Use PDF.js hosted viewer
+  const pw = document.getElementById('pw');
+  pw.style.display = 'flex';
+  document.getElementById('pt').textContent = name;
   const base = window.location.href.replace(/\/[^\/]*$/, '/');
-  document.getElementById('pdf-frame').src =
-    'https://mozilla.github.io/pdf.js/web/viewer.html?file=' + encodeURIComponent(base + file);
+  document.getElementById('pf').src =
+    'https://mozilla.github.io/pdf.js/web/viewer.html?file=' + encodeURIComponent(base + decodeURIComponent(fileEnc));
 }
 
-function goFullscreen() {
-  const f = document.getElementById('pdf-frame');
+function goFS() {
+  const f = document.getElementById('pf');
   (f.requestFullscreen || f.webkitRequestFullscreen || f.mozRequestFullScreen).call(f);
 }
 
