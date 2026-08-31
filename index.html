@@ -10,16 +10,16 @@
 <style>
 :root{
   --bg:#070b18;--s1:#0d1224;--s2:#111a30;--card:#141e35;
-  --border:rgba(120,180,255,0.12);--glow:rgba(99,179,237,0.25);
+  --border:rgba(120,180,255,0.14);--glow:rgba(99,179,237,0.25);
   --a1:#63b3ed;--a2:#9f7aea;--a3:#f6ad55;--gold:#fbd38d;
-  --text:#e8edf5;--muted:#5a6a85;--red:#fc8181;
-  --sidebar:300px;--ai:380px;
+  --text:#e8edf5;--muted:#6b7c96;--red:#fc8181;
+  --sidebar:310px;--ai:380px;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 html,body{height:100%;overflow:hidden;}
 body{font-family:'Heebo',sans-serif;background:var(--bg);color:var(--text);display:flex;flex-direction:column;}
 
-/* â”€â”€ PARTICLES â”€â”€ */
+/* PARTICLES */
 #particles{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
 .p{position:absolute;border-radius:50%;animation:drift linear infinite;opacity:0;}
 @keyframes drift{
@@ -29,7 +29,7 @@ body{font-family:'Heebo',sans-serif;background:var(--bg);color:var(--text);displ
   100%{transform:translateY(-20px) scale(1);opacity:0;}
 }
 
-/* â”€â”€ HEADER â”€â”€ */
+/* HEADER */
 header{
   position:relative;z-index:10;
   background:linear-gradient(135deg,rgba(13,18,36,.98),rgba(20,10,40,.98));
@@ -64,21 +64,21 @@ header{
 }
 .aiToggleBtn{
   display:flex;align-items:center;gap:7px;padding:7px 14px;border-radius:22px;
-  background:linear-gradient(135deg,rgba(159,122,234,.2),rgba(246,173,85,.15));
-  border:1px solid rgba(159,122,234,.35);cursor:pointer;font-family:'Heebo',sans-serif;
-  font-size:12px;font-weight:600;color:#c4b5fd;transition:.2s;white-space:nowrap;
+  background:linear-gradient(135deg,rgba(159,122,234,.25),rgba(246,173,85,.2));
+  border:1px solid rgba(159,122,234,.4);cursor:pointer;font-family:'Heebo',sans-serif;
+  font-size:12px;font-weight:600;color:#d4c8ff;transition:.2s;white-space:nowrap;
 }
-.aiToggleBtn:hover{background:linear-gradient(135deg,rgba(159,122,234,.35),rgba(246,173,85,.25));box-shadow:0 0 15px rgba(159,122,234,.3);}
+.aiToggleBtn:hover{background:linear-gradient(135deg,rgba(159,122,234,.4),rgba(246,173,85,.3));box-shadow:0 0 15px rgba(159,122,234,.3);}
 .aiToggleBtn .dot{width:7px;height:7px;border-radius:50%;background:#68d391;box-shadow:0 0 8px #68d391;animation:pulse 2s infinite;}
 @keyframes pulse{0%,100%{opacity:1;}50%{opacity:.4;}}
 
-/* â”€â”€ LAYOUT â”€â”€ */
+/* LAYOUT */
 .main{display:flex;flex:1;overflow:hidden;position:relative;z-index:1;}
 
-/* â”€â”€ SIDEBAR â”€â”€ */
+/* SIDEBAR */
 aside{
   width:var(--sidebar);flex-shrink:0;
-  background:rgba(13,18,36,.9);border-left:1px solid var(--border);
+  background:rgba(13,18,36,.92);border-left:1px solid var(--border);
   display:flex;flex-direction:column;overflow:hidden;backdrop-filter:blur(10px);
 }
 .sideTop{padding:14px 14px 8px;border-bottom:1px solid var(--border);flex-shrink:0;}
@@ -88,11 +88,11 @@ aside{
 .sideInner{overflow-y:auto;flex:1;padding:8px 0 20px;scrollbar-width:thin;scrollbar-color:rgba(99,179,237,.2) transparent;}
 
 .chapter{margin-bottom:2px;}
-.chHdr{display:flex;align-items:center;gap:10px;padding:9px 14px;cursor:pointer;user-select:none;transition:.15s;border-radius:0;}
+.chHdr{display:flex;align-items:center;gap:10px;padding:9px 14px;cursor:pointer;user-select:none;transition:.15s;}
 .chHdr:hover{background:rgba(99,179,237,.06);}
 .chIco{
   width:30px;height:30px;border-radius:9px;display:flex;align-items:center;justify-content:center;
-  font-size:15px;flex-shrink:0;transition:.2s;
+  font-size:15px;flex-shrink:0;
 }
 .chName{font-size:12px;font-weight:600;color:var(--text);flex:1;line-height:1.3;}
 .chCount{font-size:10px;color:var(--muted);background:rgba(255,255,255,.05);border-radius:9px;padding:2px 7px;flex-shrink:0;}
@@ -106,32 +106,33 @@ aside{
   padding:7px 14px 7px 26px;cursor:pointer;transition:.15s;position:relative;
 }
 .lessonItem:hover{background:rgba(99,179,237,.07);}
-.lessonItem.active{background:linear-gradient(90deg,rgba(99,179,237,.12),transparent);}
+.lessonItem.active{background:linear-gradient(90deg,rgba(99,179,237,.14),transparent);}
 .lessonItem.active::before{
   content:'';position:absolute;right:0;top:0;bottom:0;width:3px;
   background:linear-gradient(to bottom,var(--a1),var(--a2));
 }
-.lessonItem.done .lName::after{content:' &#x2713;';color:#68d391;font-size:10px;}
+.lessonItem.done .lName::after{content:' \2713';color:#68d391;font-size:10px;font-weight:700;}
 .pdfIco{
   width:24px;height:24px;border-radius:6px;display:flex;align-items:center;justify-content:center;
   font-size:9px;font-weight:800;letter-spacing:-.5px;flex-shrink:0;
   background:rgba(239,68,68,.15);border:1px solid rgba(239,68,68,.25);color:var(--red);
 }
-.lName{font-size:11.5px;color:#9ab;line-height:1.3;flex:1;}
-.lessonItem.active .lName{color:var(--a1);}
+.lName{font-size:11.5px;color:#a0aec0;line-height:1.3;flex:1;}
+.lessonItem.active .lName{color:var(--a1);font-weight:600;}
 .lSize{font-size:10px;color:var(--muted);white-space:nowrap;}
 
-/* â”€â”€ VIEWER â”€â”€ */
+/* VIEWER */
 .viewer{flex:1;display:flex;flex-direction:column;overflow:hidden;background:#090d1a;position:relative;}
 .viewerBar{
   background:rgba(17,26,48,.95);border-bottom:1px solid var(--border);
-  padding:9px 16px;display:flex;align-items:center;gap:10px;flex-shrink:0;
+  padding:9px 16px;display:flex;align-items:center;gap:8px;flex-shrink:0;
   backdrop-filter:blur(10px);
 }
-.viewerTitle{font-size:13px;font-weight:600;flex:1;color:var(--text);}
+.viewerTitle{font-size:13px;font-weight:600;flex:1;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .vBtn{
-  display:flex;align-items:center;gap:5px;padding:5px 12px;border-radius:8px;cursor:pointer;
+  display:flex;align-items:center;gap:5px;padding:6px 12px;border-radius:8px;cursor:pointer;
   font-family:'Heebo',sans-serif;font-size:11px;font-weight:600;transition:.2s;border:1px solid;
+  text-decoration:none;
 }
 .vBtn.cyan{background:rgba(99,179,237,.1);border-color:rgba(99,179,237,.3);color:var(--a1);}
 .vBtn.cyan:hover{background:rgba(99,179,237,.2);box-shadow:0 0 12px rgba(99,179,237,.2);}
@@ -139,9 +140,11 @@ aside{
 .vBtn.purple:hover{background:rgba(159,122,234,.2);box-shadow:0 0 12px rgba(159,122,234,.2);}
 .vBtn.gold{background:rgba(246,173,85,.1);border-color:rgba(246,173,85,.3);color:var(--a3);}
 .vBtn.gold:hover{background:rgba(246,173,85,.2);box-shadow:0 0 12px rgba(246,173,85,.2);}
-#pdfFrame{flex:1;border:none;width:100%;}
 
-/* â”€â”€ WELCOME SCREEN â”€â”€ */
+.pdfContainer{flex:1;display:flex;flex-direction:column;position:relative;background:#141b2d;}
+#pdfFrame{flex:1;border:none;width:100%;height:100%;}
+
+/* WELCOME SCREEN */
 .welcome{
   flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
   gap:24px;padding:40px;text-align:center;
@@ -174,13 +177,8 @@ aside{
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;
 }
 .statLabel{font-size:11px;color:var(--muted);margin-top:3px;font-weight:500;}
-.quickTip{
-  background:rgba(159,122,234,.08);border:1px solid rgba(159,122,234,.2);
-  border-radius:12px;padding:12px 20px;font-size:12px;color:#c4b5fd;
-  max-width:440px;line-height:1.6;
-}
 
-/* â”€â”€ AI PANEL â”€â”€ */
+/* AI PANEL */
 .aiPanel{
   width:0;flex-shrink:0;overflow:hidden;
   background:rgba(10,14,28,.97);border-right:1px solid var(--border);
@@ -200,6 +198,10 @@ aside{
 .aiHeaderText{flex:1;}
 .aiHeaderText h3{font-size:13px;font-weight:700;color:var(--text);}
 .aiHeaderText p{font-size:10px;color:var(--muted);margin-top:1px;}
+.aiKeyBtn{
+  font-size:11px;padding:4px 8px;border-radius:6px;background:rgba(255,255,255,.07);
+  border:1px solid var(--border);color:var(--gold);cursor:pointer;
+}
 .aiClose{cursor:pointer;color:var(--muted);transition:.2s;padding:4px;}
 .aiClose:hover{color:var(--text);}
 
@@ -221,7 +223,7 @@ aside{
 .qBtn.q4:hover{background:rgba(252,129,129,.2);}
 
 .aiMessages{flex:1;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:10px;scrollbar-width:thin;scrollbar-color:rgba(99,179,237,.2) transparent;}
-.msg{max-width:90%;padding:10px 13px;border-radius:12px;font-size:12px;line-height:1.65;animation:msgIn .25s ease;}
+.msg{max-width:92%;padding:10px 13px;border-radius:12px;font-size:12px;line-height:1.65;animation:msgIn .25s ease;}
 @keyframes msgIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
 .msg.user{
   align-self:flex-start;
@@ -262,7 +264,6 @@ aside{
 .aiSend:hover{box-shadow:0 0 15px rgba(99,179,237,.4);transform:scale(1.05);}
 .aiSend svg{color:#fff;}
 
-/* No results */
 .noR{padding:30px;text-align:center;color:var(--muted);font-size:12px;}
 
 ::-webkit-scrollbar{width:4px;}
@@ -308,26 +309,27 @@ aside{
     <div class="welcome" id="welcome">
       <div class="wIcon">&#x1F4DA;</div>
       <div class="wTitle">&#x05D1;&#x05E8;&#x05D5;&#x05DB;&#x05D9;&#x05DD; &#x05DC;&#x05E7;&#x05D5;&#x05E8;&#x05E1;</div>
-      <div class="wSub">&#x05D1;&#x05D7;&#x05E8;&#x05D5; &#x05E9;&#x05D9;&#x05E2;&#x05D5;&#x05E8; &#x05DE;&#x05D4;&#x05E8;&#x05E9;&#x05D9;&#x05DE;&#x05D4; &#x05DB;&#x05D3;&#x05D9; &#x05DC;&#x05E6;&#x05E4;&#x05D5;&#x05EA; &#x05D1;&#x05D5; &mdash; &#x05D0;&#x05D5; &#x05E9;&#x05D0;&#x05DC;&#x05D5; &#x05D0;&#x05EA; &#x05E2;&#x05D5;&#x05D6;&#x05E8; &#x05D4;AI &#x05E9;&#x05DC;&#x05E0;&#x05D5;!</div>
+      <div class="wSub">&#x05D1;&#x05D7;&#x05E8;&#x05D5; &#x05E9;&#x05D9;&#x05E2;&#x05D5;&#x05E8; &#x05DE;&#x05D4;&#x05E8;&#x05E9;&#x05D9;&#x05DE;&#x05D4; &#x05DB;&#x05D3;&#x05D9; &#x05DC;&#x05E6;&#x05E4;&#x05D5;&#x05EA; &#x05D1;&#x05D5; &mdash; &#x05D0;&#x05D5; &#x05E9;&#x05D0;&#x05DC;&#x05D5; &#x05D0;&#x05EA; &#x05E2;&#x05D5;&#x05D6;&#x05E8; &#x05D4;AI!</div>
       <div class="statsRow">
         <div class="statCard"><div class="statNum" id="sChap">-</div><div class="statLabel">&#x05E4;&#x05E8;&#x05E7;&#x05D9;&#x05DD;</div></div>
         <div class="statCard"><div class="statNum" id="sLess">-</div><div class="statLabel">&#x05E9;&#x05D9;&#x05E2;&#x05D5;&#x05E8;&#x05D9;&#x05DD;</div></div>
         <div class="statCard"><div class="statNum" id="sViewed">0</div><div class="statLabel">&#x05E6;&#x05E4;&#x05D9;&#x05EA;&#x05D9;</div></div>
       </div>
-      <div class="quickTip">&#x1F916; &#x05D4;AI &#x05E9;&#x05DC;&#x05E0;&#x05D5; &#x05DE;&#x05D1;&#x05D5;&#x05E1;&#x05E1; &#x05E2;&#x05DC; Gemini &mdash; &#x05E9;&#x05D0;&#x05DC;&#x05D5; &#x05D0;&#x05D5;&#x05EA;&#x05D5; &#x05DB;&#x05DC; &#x05E9;&#x05D0;&#x05DC;&#x05D4; &#x05E2;&#x05DC; &#x05D0;&#x05D1;&#x05D7;&#x05E0;&#x05D5;&#x05EA; &#x05D1;&#x05E8;&#x05E4;&#x05D5;&#x05D0;&#x05D4; &#x05E1;&#x05D9;&#x05E0;&#x05D9;&#x05EA;, &#x05E1;&#x05D9;&#x05E0;&#x05D3;&#x05E8;&#x05D5;&#x05DE;&#x05D9;&#x05DD;, &#x05DE;&#x05E8;&#x05D9;&#x05D3;&#x05D9;&#x05D0;&#x05E0;&#x05D9;&#x05DD; &#x05D5;&#x05E2;&#x05D5;&#x05D3;!</div>
     </div>
     <div id="pdfWrap" style="display:none;flex-direction:column;flex:1;">
       <div class="viewerBar">
         <div class="viewerTitle" id="viewerTitle">-</div>
-        <div class="vBtn cyan" onclick="goFullscreen()">
+        <a class="vBtn cyan" id="btnOpenNew" href="" target="_blank">
           <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/>
-          </svg>&#x05DE;&#x05E1;&#x05DA; &#x05DE;&#x05DC;&#x05D0;
-        </div>
-        <div class="vBtn purple" onclick="aiExplain()">&#x1F916; &#x05D4;&#x05E1;&#x05D1;&#x05E8; &#x05D0;&#x05EA; &#x05D4;&#x05E9;&#x05D9;&#x05E2;&#x05D5;&#x05E8;</div>
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+          </svg>&#x05E4;&#x05EA;&#x05D7; &#x05D1;&#x05D7;&#x05DC;&#x05D5;&#x05DF; &#x05D7;&#x05D3;&#x05E9;
+        </a>
+        <div class="vBtn purple" onclick="aiExplain()">&#x1F916; &#x05D4;&#x05E1;&#x05D1;&#x05E8; &#x05E9;&#x05D9;&#x05E2;&#x05D5;&#x05E8;</div>
         <div class="vBtn gold" onclick="aiQuiz()">&#x1F4DD; &#x05D1;&#x05D3;&#x05D5;&#x05E7; &#x05D0;&#x05D5;&#x05EA;&#x05D9;</div>
       </div>
-      <iframe id="pdfFrame" src=""></iframe>
+      <div class="pdfContainer">
+        <iframe id="pdfFrame" src=""></iframe>
+      </div>
     </div>
   </div>
 
@@ -337,8 +339,9 @@ aside{
       <div class="aiHeaderIcon">&#x1F916;</div>
       <div class="aiHeaderText">
         <h3>&#x05E2;&#x05D5;&#x05D6;&#x05E8; &#x05D4;&#x05DC;&#x05D9;&#x05DE;&#x05D5;&#x05D3; AI</h3>
-        <p>&#x05DE;&#x05D5;&#x05E4;&#x05E2;&#x05DC; &#x05E2;&#x05DC; &#x05D9;&#x05D3;&#x05D9; Gemini Flash &bull; &#x05D7;&#x05D9;&#x05E0;&#x05DE;&#x05D9;</p>
+        <p>&#x05DE;&#x05D5;&#x05E4;&#x05E2;&#x05DC; &#x05E2;&#x05DC; &#x05D9;&#x05D3;&#x05D9; Gemini</p>
       </div>
+      <button class="aiKeyBtn" onclick="promptApiKey()" title="&#x05D4;&#x05D2;&#x05D3;&#x05E8; &#x05DE;&#x05E4;&#x05EA;&#x05D7; API">&#x2699;&#xFE0F; &#x05DE;&#x05E4;&#x05EA;&#x05D7;</button>
       <div class="aiClose" onclick="toggleAI()">
         <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
           <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
@@ -349,11 +352,11 @@ aside{
       <div class="qBtn q1" onclick="sendQ('\u05DE\u05D4\u05D9\u05DD \u05E1\u05D9\u05E0\u05D3\u05E8\u05D5\u05DE\u05D9 \u05DB\u05D1\u05D3 \u05D1\u05E8\u05E4\u05D5\u05D0\u05D4 \u05E1\u05D9\u05E0\u05D9\u05EA?')">&#x05DB;&#x05D1;&#x05D3;</div>
       <div class="qBtn q1" onclick="sendQ('\u05D0\u05D9\u05DA \u05DC\u05D0;&#x05D1;&#x05D7;&#x05DF; \u05D3;&#x05D5;\u05E4\u05E7?')">&#x05D3;&#x05D5;&#x05E4;&#x05E7;</div>
       <div class="qBtn q2" onclick="aiQuiz()">&#x05D7;&#x05D9;&#x05D3;&#x05D5;&#x05DF;</div>
-      <div class="qBtn q3" onclick="sendQ('\u05E1\u05DB\u05DD \u05D1\u05E7;&#x05E6;&#x05E8; \u05D0\u05EA \u05E9;&#x05DE;&#x05D5;&#x05E0\u05EA \u05D4\u05E2\u05E7\u05E8\u05D5\u05E0\u05D5\u05EA \u05D1\u05E8\u05E4\u05D5\u05D0\u05D4 \u05E1\u05D9\u05E0\u05D9\u05EA')">8 &#x05E2;&#x05E7;&#x05E8;&#x05D5;&#x05E0;&#x05D5;&#x05EA;</div>
+      <div class="qBtn q3" onclick="sendQ('\u05E1\u05DB\u05DD \u05D1\u05E7;&#x05E6;&#x05E8; \u05D0\u05EA \u05E9;&#x05DE;&#x05D5;&#x05E0;&#u05EA \u05D4\u05E2\u05E7\u05E8\u05D5\u05E0\u05D5\u05EA \u05D1\u05E8\u05E4\u05D5\u05D0\u05D4 \u05E1\u05D9\u05E0\u05D9\u05EA')">8 &#x05E2;&#x05E7;&#x05E8;&#x05D5;&#x05E0;&#x05D5;&#x05EA;</div>
       <div class="qBtn q4" onclick="sendQ('\u05DE\u05D4 \u05D4\u05D4\u05D1\u05D3\u05DC \u05D1\u05D9\u05DF \u05D9\u05D9\u05DF \u05DC\u05D9\u05D0\u05E0\u05D2?')">&#x05D9;&#x05D9;&#x05DF; / &#x05D9;&#x05D0;&#x05E0;&#x05D2;</div>
     </div>
     <div class="aiMessages" id="aiMessages">
-      <div class="msg sys">&#x05E9;&#x05DC;&#x05D5;&#x05DD;! &#x05D0;&#x05E0;&#x05D9; &#x05E2;&#x05D5;&#x05D6;&#x05E8; &#x05D4;&#x05DC;&#x05D9;&#x05DE;&#x05D5;&#x05D3; &#x05E9;&#x05DC;&#x05DA; &#x05D1;&#x05D0;&#x05D1;&#x05D7;&#x05E0;&#x05D5;&#x05EA; &#x05D5;&#x05E1;&#x05D9;&#x05E0;&#x05D3;&#x05E8;&#x05D5;&#x05DE;&#x05D9;&#x05DD;. &#x05E9;&#x05D0;&#x05DC; &#x05D0;&#x05D5;&#x05EA;&#x05D9; &#x05DB;&#x05DC; &#x05E9;&#x05D0;&#x05DC;&#x05D4; &#x05D1;&#x05E2;&#x05D1;&#x05E8;&#x05D9;&#x05EA; &#x05D0;&#x05D5; &#x05D0;&#x05E0;&#x05D2;&#x05DC;&#x05D9;&#x05EA;! &#x1F33F;</div>
+      <div class="msg sys">&#x05E9;&#x05DC;&#x05D5;&#x05DD;! &#x05D0;&#x05E0;&#x05D9; &#x05E2;&#x05D5;&#x05D6;&#x05E8; &#x05D4;&#x05DC;&#x05D9;&#x05DE;&#x05D5;&#x05D3; &#x05E9;&#x05DC;&#x05DA; &#x05D1;&#x05D0;&#x05D1;&#x05D7;&#x05E0;&#x05D5;&#x05EA; &#x05D5;&#x05E1;&#x05D9;&#x05E0;&#x05D3;&#x05E8;&#x05D5;&#x05DE;&#x05D9;&#x05DD;. &#x05E9;&#x05D0;&#x05DC; &#x05D0;&#x05D5;&#x05EA;&#x05D9; &#x05DB;&#x05DC; &#x05E9;&#x05D0;&#x05DC;&#x05D4; &#x05D1;&#x05E2;&#x05D1;&#x05E8;&#x05D9;&#x05EA;! &#x1F33F;</div>
     </div>
     <div class="aiInputRow">
       <textarea class="aiInput" id="aiInput" placeholder="&#x05E9;&#x05D0;&#x05DC; &#x05D0;&#x05EA; &#x05D4;AI..." rows="1"
@@ -369,9 +372,20 @@ aside{
 </div>
 
 <script>
-const GEMINI_KEY = "AQ.Ab8RN6KmdeBeA3Ln"+"kH7_IWlvorG7NRgTpzb0SrFEeOMQiasZUQ";
+let savedKey = localStorage.getItem('GEMINI_API_KEY') || "";
+
+function promptApiKey() {
+  const current = savedKey ? (savedKey.substring(0, 8) + '...') : '×œ× ×”×•×’×“×¨';
+  const input = prompt('×”×›× ×¡ ×ž×¤×ª×— Gemini API ×ž-Google AI Studio (×ž×ª×—×™×œ ×‘-AIzaSy...):\n× ×•×›×—×™: ' + current, savedKey);
+  if (input !== null) {
+    savedKey = input.trim();
+    localStorage.setItem('GEMINI_API_KEY', savedKey);
+    addMsg('×ž×¤×ª×— ×”-API ×¢×•×“×›×Ÿ ×‘×”×¦×œ×—×”!', 'sys');
+  }
+}
+
 const data = window.COURSE_DATA || [];
-let totalL = 0, viewed = 0, currentLesson = null;
+let totalL = 0, viewed = 0, currentLesson = null, currentPdfUrl = "";
 data.forEach(c => totalL += c.lessons.length);
 document.getElementById('sChap').textContent = data.length;
 document.getElementById('sLess').textContent = totalL;
@@ -386,9 +400,9 @@ document.getElementById('badge').textContent = totalL + ' \u05E9\u05D9\u05E2\u05
     p.className='p';
     const sz=Math.random()*4+2;
     const col=colors[Math.floor(Math.random()*colors.length)];
-    p.style.cssText=width:px;height:px;left:%;
-      background:);
-      animation-duration:s;animation-delay:s;;
+    p.style.cssText=`width:${sz}px;height:${sz}px;left:${Math.random()*100}%;
+      background:${col+(.5+Math.random()*.5)});
+      animation-duration:${8+Math.random()*15}s;animation-delay:${Math.random()*10}s;`;
     c.appendChild(p);
   }
 })();
@@ -423,7 +437,7 @@ function buildSidebar(q){
       '</div>'+
       '<div class="lessonList">'+
         ls.map(l=>
-          '<div class="lessonItem" id="li-'+l.file.replace(/[^a-z0-9]/gi,'_')+'" onclick="openPDF(this,\''+encodeURIComponent(l.file)+'\',\''+l.name.replace(/'/g,'&#39;')+'\')" data-file="'+l.file+'">'+
+          '<div class="lessonItem" id="li-'+l.file.replace(/[^a-z0-9]/gi,'_')+'" onclick="openPDF(this,\''+l.file+'\',\''+l.name.replace(/'/g,'&#39;')+'\')" data-file="'+l.file+'">'+
             '<div class="pdfIco">PDF</div>'+
             '<div class="lName">'+l.name+'</div>'+
             '<div class="lSize">'+l.sizeMB+'M</div>'+
@@ -436,27 +450,26 @@ function buildSidebar(q){
 }
 
 let activeItem=null;
-function openPDF(el,fileEnc,name){
+function openPDF(el,filePath,name){
   if(activeItem)activeItem.classList.remove('active');
   el.classList.add('active','done');
   activeItem=el;
   currentLesson=name;
+  currentPdfUrl=filePath;
+
   document.getElementById('welcome').style.display='none';
   const pw=document.getElementById('pdfWrap');
   pw.style.display='flex';
   document.getElementById('viewerTitle').textContent=name;
+  document.getElementById('btnOpenNew').href=filePath;
+  
   viewed++;
   document.getElementById('sViewed').textContent=viewed;
   const pct=Math.round(viewed/totalL*100);
   document.getElementById('progressFill').style.width=pct+'%';
-  const base=window.location.href.replace(/\/[^\/]*$/,'/');
-  document.getElementById('pdfFrame').src=
-    'https://mozilla.github.io/pdf.js/web/viewer.html?file='+encodeURIComponent(base+decodeURIComponent(fileEnc));
-}
 
-function goFullscreen(){
-  const f=document.getElementById('pdfFrame');
-  (f.requestFullscreen||f.webkitRequestFullscreen||f.mozRequestFullScreen).call(f);
+  // Direct native browser PDF viewing (works 100% locally and on CDN)
+  document.getElementById('pdfFrame').src = filePath + '#toolbar=1&navpanes=0';
 }
 
 document.getElementById('searchInput').addEventListener('input',e=>buildSidebar(e.target.value.trim()));
@@ -490,11 +503,27 @@ function showTyping(){
 function hideTyping(){const t=document.getElementById('typing');if(t)t.remove();}
 
 async function callGemini(prompt){
-  const url='https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key='+GEMINI_KEY;
-  const sys='\u05D0;&#x05EA;\u05D4; \u05E2;&#x05D5;\u05D6\u05E8; \u05DC\u05D9\u05DE;&#x05D5;\u05D3; \u05DE;&#x05D5;\u05DE;\u05D7\u05D4; \u05DC;&#x05E8;\u05E4;\u05D5;&#x05D0;\u05D4; \u05E1;&#x05D9;\u05E0;\u05D9;&#x05EA; \u05DC;\u05EA\u05DC;\u05DE;&#x05D9;\u05D3;\u05D5;\u05EA; \u05E9;&#x05E0;\u05D4; \u05D1;&#x05D9; \u05D1;\u05E7;\u05D5\u05E8;\u05E1; "\u05D0;&#x05D1;\u05D7;\u05E0;&#x05D5;\u05EA; \u05D5\u05E1;&#x05D9;\u05E0;\u05D3;\u05E8;\u05D5;\u05DE;&#x05D9;\u05DD;". \u05D4;\u05E7;\u05D5;\u05E8;\u05E1; \u05DB;\u05D5;\u05DC;\u05DC;: \u05D0;&#x05D1;\u05D7;\u05E0;\u05EA; \u05D3;&#x05D5;\u05E4;\u05E7;, \u05DC;\u05E9;&#x05D5;\u05DF;, \u05E9;&#x05DE;\u05D5;\u05E0;\u05EA; \u05D4;\u05E2;&#x05E7;\u05E8;\u05D5;\u05E0;\u05D5;\u05EA;, 12 \u05DE;&#x05E8;\u05D9;\u05D3;\u05D9;&#x05D0;\u05E0;\u05D9;\u05DD; (\u05E8;&#x05D9;\u05D0;\u05D4;, \u05DE;&#x05E2;\u05D9; \u05D2;\u05E1;, \u05D8;&#x05D7;\u05D5;\u05DC;, \u05E7;&#x05D9;\u05D1;\u05D4;, \u05DC;\u05D1;, \u05DE;&#x05E2;\u05D9; \u05D3;\u05E7;, \u05DB;&#x05DC;\u05D9;\u05D9;\u05D4;, \u05E9;&#x05DC;\u05E4;&#x05D5;\u05D7;\u05D9;\u05EA;, \u05E7;&#x05E8;\u05D5;\u05DD; \u05D4;\u05DC;\u05D1;, \u05E9;&#x05DC;\u05D5;\u05E9;\u05D4; \u05DE;&#x05D7;\u05DE;&#x05DE;\u05D9;\u05DD;, \u05DB;&#x05D9;\u05E1; \u05DE;&#x05E8;\u05D4;, \u05DB;&#x05D1;\u05D3;), \u05E1;&#x05D9;\u05E0;\u05D3;\u05E8;\u05D5;\u05DE;\u05D9;\u05DD; \u05D5;&#x05D0;\u05D1;\u05D7;\u05E0;\u05D5;\u05EA;. \u05E2;&#x05E0;\u05D4; \u05D1;&#x05E9;\u05E4;\u05D4; \u05E9;\u05D4;\u05EA;\u05DC;\u05DE;\u05D9;\u05D3; \u05E9;\u05D5;\u05D0;\u05DC; (\u05E2;&#x05D1;\u05E8;\u05D9;\u05EA; \u05D0;\u05D5; \u05D0;&#x05E0;\u05D2;\u05DC;\u05D9;\u05EA;). \u05D4;\u05D9;\u05D4; \u05DE;&#x05D3;\u05D5;\u05D9;\u05E7; \u05D5;&#x05DE;\u05E2;&#x05E0;\u05D9;\u05D9;\u05DF;.';
+  const key = savedKey || localStorage.getItem('GEMINI_API_KEY');
+  if (!key) {
+    promptApiKey();
+    const updatedKey = localStorage.getItem('GEMINI_API_KEY');
+    if (!updatedKey) {
+      throw new Error('× ×“×¨×© ×ž×¤×ª×— Gemini API ×—×™× ×ž×™. ×œ×—×¥ ×¢×œ ×›×¤×ª×•×¨ âš™ï¸ ×ž×¤×ª×— ×œ×ž×¢×œ×” ×œ×”×–× ×ª ×ž×¤×ª×— ×ž-aistudio.google.com');
+    }
+  }
+  const activeKey = localStorage.getItem('GEMINI_API_KEY') || key;
+  const url='https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key='+activeKey;
+  const sys='\u05D0;&#x05EA;\u05D4; \u05E2;&#x05D5;&#x05D6;&#x05E8; \u05DC\u05D9\u05DE;&#x05D5;&#x05D3; \u05DE;&#x05D5;&#x05DE;\u05D7\u05D4; \u05DC;&#x05E8;&#x05E4;&#x05D5;&#x05D0;\u05D4; \u05E1;&#x05D9;&#x05E0;&#x05D9;&#x05EA; \u05DC;\u05EA\u05DC;\u05DE;&#x05D9;&#x05D3;\u05D5;\u05EA; \u05E9;&#x05E0;\u05D4; \u05D1;&#x05D9; \u05D1;\u05E7;\u05D5\u05E8;\u05E1; "\u05D0;&#x05D1;&#x05D7;\u05E0;&#x05D5;&#x05EA; \u05D5\u05E1;&#x05D9;&#x05E0;&#x05D3;&#x05E8;&#x05D5;&#x05DE;&#x05D9;&#x05DD;". \u05D4;\u05E7;\u05D5;\u05E8;\u05E1; \u05DB;\u05D5;\u05DC;\u05DC;: \u05D0;&#x05D1;&#x05D7;\u05E0;\u05EA; \u05D3;&#x05D5;&#x05E4;\u05E7;, \u05DC;\u05E9;&#x05D5;\u05DF;, \u05E9;&#x05DE;&#x05D5;&#x05E0;\u05EA; \u05D4;&#x05E2;&#x05E7;&#x05E8;&#x05D5;&#x05E0;\u05D5;&#x05EA;, 12 \u05DE;&#x05E8;\u05D9;&#x05D3;&#x05D9;&#x05D0;\u05E0;&#x05D9;&#x05DD;, \u05E1;&#x05D9;&#x05E0;&#x05D3;&#x05E8;&#x05D5;&#x05DE;&#x05D9;&#x05DD; \u05D5;&#x05D0;&#x05D1;&#x05D7;&#x05E0;&#x05D5;&#x05EA;. \u05E2;&#x05E0;&#x05D4; \u05D1;&#x05E2;&#x05D1;&#x05E8;&#x05D9;&#x05EA; \u05D1;&#x05D4;&#x05D9;&#x05E8;&#x05D4;, \u05DE;&#x05E7;&#x05E6;&#x05D5;&#x05E2;&#x05D9;&#x05EA; \u05D5;&#x05DE;&#x05E2;&#x05E0;&#x05D9;&#x05D9;&#x05E0;&#x05EA;.';
   const body={contents:[{parts:[{text:sys+'\n\n'+prompt}]}],generationConfig:{temperature:.7,maxOutputTokens:1024}};
   const r=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
-  if(!r.ok){const e=await r.text();throw new Error(e);}
+  if(!r.ok){
+    const e=await r.json().catch(()=>({error:{message:r.statusText}}));
+    const msg = e.error ? e.error.message : r.statusText;
+    if (msg.includes('API_KEY_INVALID') || msg.includes('API key not valid')) {
+      throw new Error('×ž×¤×ª×— ×”-API ××™× ×• ×ª×§×™×Ÿ. ×œ×—×¥ ×¢×œ âš™ï¸ ×ž×¤×ª×— ×œ×ž×¢×œ×” ×•×”×–×Ÿ ×ž×¤×ª×— ×ª×§×™×Ÿ ×ž-aistudio.google.com');
+    }
+    throw new Error(msg);
+  }
   const j=await r.json();
   return j.candidates[0].content.parts[0].text;
 }
@@ -519,18 +548,18 @@ async function sendAI(){
     addMsg(ans,'ai');
   }catch(e){
     hideTyping();
-    addMsg('\u05E9;&#x05D2;\u05D9;&#x05D0;\u05D4;: '+e.message,'sys');
+    addMsg('\u26A0\uFE0F '+e.message,'sys');
   }
 }
 
 async function aiExplain(){
-  if(!currentLesson){addMsg('\u05D1;&#x05D7;\u05E8; \u05E9;&#x05D9;\u05E2;\u05D5;\u05E8; \u05EA;&#x05D7;\u05D9;\u05DC;\u05D4;','sys');return;}
-  await sendQ('\u05D4;&#x05E1;\u05D1;&#x05E8; \u05D0;&#x05EA; \u05D4;\u05E0;\u05D5;\u05E9;&#x05D0; "'+currentLesson+'" \u05D1;&#x05E8;\u05E4;\u05D5;&#x05D0;\u05D4; \u05E1;\u05D9;\u05E0;\u05D9;\u05EA; \u05D1;&#x05E6;\u05D5;\u05E8;\u05D4; \u05D1;\u05D4;\u05D9;\u05E8;\u05D4; \u05D5;\u05DE;\u05E7;&#x05D9;\u05E4;\u05EA;');
+  if(!currentLesson){addMsg('\u05D1;&#x05D7;&#x05E8; \u05E9;&#x05D9;&#x05E2;&#x05D5;&#x05E8; \u05EA;&#x05D7;&#x05D9;&#x05DC;&#x05D4;','sys');return;}
+  await sendQ('\u05D4;&#x05E1;&#x05D1;&#x05E8; \u05D0;&#x05EA; \u05D4;\u05E0;\u05D5;\u05E9;&#x05D0; "'+currentLesson+'" \u05D1;&#x05E8;&#x05E4;&#x05D5;&#x05D0;&#x05D4; \u05E1\u05D9\u05E0\u05D9\u05EA; \u05D1;&#x05E6;&#x05D5;&#x05E8;&#x05D4; \u05D1;&#x05D4;&#x05D9;&#x05E8;&#x05D4; \u05D5;\u05DE;\u05E7;&#x05D9;&#x05E4;&#x05EA;');
 }
 
 async function aiQuiz(){
-  if(!currentLesson){await sendQ('\u05E6;\u05D5;\u05E8; \u05DC;&#x05D9; \u05E9;&#x05D0;\u05DC;\u05D4; \u05D0;\u05DE;\u05E8;\u05D9;\u05E7;&#x05D0;\u05D9;\u05EA; \u05E2;\u05DC; \u05D0;&#x05D1;\u05D7;\u05E0;\u05D5;\u05EA; \u05D1;\u05E8;\u05E4;\u05D5;&#x05D0;\u05D4; \u05E1;\u05D9;\u05E0;\u05D9;\u05EA;');return;}
-  await sendQ('\u05E6;\u05D5;\u05E8; \u05DC;&#x05D9; 3 \u05E9;\u05D0;\u05DC;\u05D5;\u05EA; \u05D0;\u05DE;\u05E8;\u05D9;\u05E7;&#x05D0;\u05D9;\u05D5;\u05EA; \u05E2;\u05DC; \u05D4;\u05E0;\u05D5;\u05E9;&#x05D0; "'+currentLesson+'" \u05E2;\u05DD; 4 \u05EA;\u05E9;\u05D5;\u05D1;\u05D5;\u05EA; \u05D0;\u05E4;\u05E9;\u05E8;\u05D5;\u05D9;\u05D5;\u05EA; \u05D5;\u05E1;\u05DE;\u05DF; \u05D0;\u05EA; \u05D4;\u05E0;\u05DB;\u05D5;\u05E0;\u05D4;');
+  if(!currentLesson){await sendQ('\u05E6;\u05D5;&#x05E8; \u05DC;&#x05D9; \u05E9;&#x05D0;&#x05DC;&#x05D4; \u05D0;\u05DE;\u05E8;&#x05D9;&#x05E7;&#x05D0;\u05D9;&#x05EA; \u05E2;\u05DC; \u05D0;&#x05D1;&#x05D7;&#x05E0;&#x05D5;&#x05EA; \u05D1;&#x05E8;&#x05E4;&#x05D5;&#x05D0;&#x05D4; \u05E1\u05D9\u05E0\u05D9\u05EA;');return;}
+  await sendQ('\u05E6;\u05D5;&#x05E8; \u05DC;&#x05D9; 3 \u05E9;&#x05D0;&#x05DC;&#x05D5;&#x05EA; \u05D0;\u05DE;\u05E8;&#x05D9;&#x05E7;&#x05D0;\u05D9;&#x05D5;&#x05EA; \u05E2;\u05DC; \u05D4;\u05E0;\u05D5;\u05E9;&#x05D0; "'+currentLesson+'" \u05E2;\u05DD; 4 \u05EA;\u05E9;&#x05D5;\u05D1;&#x05D5;&#x05EA; \u05D0;\u05E4;&#x05E9;&#x05E8;&#x05D5;&#x05D9;&#x05D5;&#x05EA; \u05D5;\u05E1;\u05DE;&#x05DF; \u05D0;&#x05EA; \u05D4;\u05E0;\u05DB;&#x05D5;&#x05E0;&#x05D4;');
 }
 
 buildSidebar('');
