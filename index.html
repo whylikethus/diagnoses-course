@@ -1,183 +1,538 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>&#1488;&#1489;&#1495;&#1504;&#1493;&#1514; &#1493;&#1505;&#1497;&#1504;&#1491;&#1512;&#1493;&#1502;&#1497;&#1501; &#8212; &#1513;&#1504;&#1492; &#1489;&#1468;&#1497; 25-26</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <script src="course-data.js"></script>
-  <style>
-    :root{--bg:#0a0e1a;--surface:#111827;--card:#1a2235;--border:rgba(99,179,237,0.15);
-      --accent:#63b3ed;--accent2:#9f7aea;--gold:#f6d860;--text:#e2e8f0;--muted:#718096;--sw:330px;}
-    *{margin:0;padding:0;box-sizing:border-box;}
-    body{font-family:'Heebo',sans-serif;background:var(--bg);color:var(--text);height:100vh;display:flex;flex-direction:column;overflow:hidden;}
-    header{background:linear-gradient(135deg,#0d1b3e,#1a0a3e);border-bottom:1px solid var(--border);
-      padding:0 24px;height:64px;display:flex;align-items:center;gap:16px;flex-shrink:0;
-      box-shadow:0 4px 24px rgba(0,0,0,.4);z-index:10;}
-    .logo{width:38px;height:38px;background:linear-gradient(135deg,var(--accent),var(--accent2));
-      border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
-    header h1{font-size:16px;font-weight:700;background:linear-gradient(135deg,var(--accent),var(--accent2));
-      -webkit-background-clip:text;-webkit-text-fill-color:transparent;flex:1;}
-    .sw{position:relative;width:210px;}
-    .sw input{width:100%;background:rgba(255,255,255,.07);border:1px solid var(--border);border-radius:24px;
-      padding:7px 16px 7px 36px;color:var(--text);font-family:'Heebo',sans-serif;font-size:13px;outline:none;transition:border-color .2s;}
-    .sw input:focus{border-color:var(--accent);}
-    .sw svg{position:absolute;left:11px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none;}
-    .badge{background:rgba(99,179,237,.12);border:1px solid rgba(99,179,237,.25);border-radius:20px;
-      padding:4px 12px;font-size:12px;color:var(--accent);white-space:nowrap;}
-    .main{display:flex;flex:1;overflow:hidden;}
-    aside{width:var(--sw);background:var(--surface);border-left:1px solid var(--border);display:flex;flex-direction:column;overflow:hidden;flex-shrink:0;}
-    .si{overflow-y:auto;flex:1;padding:8px 0 24px;scrollbar-width:thin;scrollbar-color:var(--border) transparent;}
-    .chapter{margin-bottom:2px;}
-    .ch{display:flex;align-items:center;gap:10px;padding:10px 16px;cursor:pointer;user-select:none;transition:background .15s;}
-    .ch:hover{background:rgba(99,179,237,.06);}
-    .ci{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;
-      font-size:14px;flex-shrink:0;background:linear-gradient(135deg,var(--accent),var(--accent2));}
-    .cn{font-size:12.5px;font-weight:600;color:var(--text);flex:1;line-height:1.3;}
-    .cc{font-size:11px;color:var(--muted);background:rgba(255,255,255,.05);border-radius:10px;padding:2px 7px;}
-    .cv{color:var(--muted);transition:transform .25s;flex-shrink:0;}
-    .chapter.open .cv{transform:rotate(90deg);}
-    .ll{overflow:hidden;max-height:0;transition:max-height .35s ease;}
-    .chapter.open .ll{max-height:3000px;}
-    .li{display:flex;align-items:center;gap:10px;padding:7px 16px 7px 28px;cursor:pointer;transition:background .15s;position:relative;}
-    .li:hover{background:rgba(99,179,237,.08);}
-    .li.active{background:rgba(99,179,237,.14);}
-    .li.active::after{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;
-      background:linear-gradient(to bottom,var(--accent),var(--accent2));border-radius:0 3px 3px 0;}
-    .pb{width:26px;height:26px;background:rgba(239,68,68,.15);border:1px solid rgba(239,68,68,.3);
-      border-radius:6px;display:flex;align-items:center;justify-content:center;
-      font-size:9px;color:#fc8181;flex-shrink:0;font-weight:800;letter-spacing:-.5px;}
-    .ln{font-size:12px;color:#cbd5e0;line-height:1.3;flex:1;}
-    .li.active .ln{color:var(--accent);}
-    .ls{font-size:10px;color:var(--muted);white-space:nowrap;}
-    .viewer{flex:1;display:flex;flex-direction:column;overflow:hidden;background:#0d1117;}
-    .vb{background:var(--card);border-bottom:1px solid var(--border);padding:10px 20px;
-      display:flex;align-items:center;gap:12px;flex-shrink:0;}
-    .vt{font-size:13px;font-weight:600;color:var(--text);flex:1;}
-    .btn{display:flex;align-items:center;gap:6px;background:rgba(99,179,237,.1);
-      border:1px solid rgba(99,179,237,.25);border-radius:8px;padding:6px 14px;
-      color:var(--accent);font-family:'Heebo',sans-serif;font-size:12px;cursor:pointer;transition:all .2s;}
-    .btn:hover{background:rgba(99,179,237,.2);border-color:var(--accent);}
-    #pf{flex:1;border:none;width:100%;}
-    .welcome{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;padding:40px;text-align:center;}
-    .wi{width:90px;height:90px;background:linear-gradient(135deg,rgba(99,179,237,.15),rgba(159,122,234,.15));
-      border:1px solid rgba(99,179,237,.25);border-radius:24px;display:flex;align-items:center;
-      justify-content:center;font-size:44px;animation:float 3s ease-in-out infinite;}
-    @keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
-    .welcome h2{font-size:24px;font-weight:800;background:linear-gradient(135deg,var(--accent),var(--accent2));
-      -webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-    .welcome p{color:var(--muted);font-size:14px;max-width:380px;line-height:1.7;}
-    .sr{display:flex;gap:16px;margin-top:8px;}
-    .sc{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:14px 22px;text-align:center;}
-    .sc .n{font-size:26px;font-weight:800;background:linear-gradient(135deg,var(--accent),var(--gold));
-      -webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-    .sc .l{font-size:11px;color:var(--muted);margin-top:2px;}
-    .nr{padding:40px 16px;text-align:center;color:var(--muted);font-size:13px;}
-    ::-webkit-scrollbar{width:4px;}
-    ::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px;}
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>&#x05D0;&#x05D1;&#x05D7;&#x05E0;&#x05D5;&#x05EA; &#x05D5;&#x05E1;&#x05D9;&#x05E0;&#x05D3;&#x05E8;&#x05D5;&#x05DE;&#x05D9;&#x05DD;</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="course-data.js"></script>
+<style>
+:root{
+  --bg:#070b18;--s1:#0d1224;--s2:#111a30;--card:#141e35;
+  --border:rgba(120,180,255,0.12);--glow:rgba(99,179,237,0.25);
+  --a1:#63b3ed;--a2:#9f7aea;--a3:#f6ad55;--gold:#fbd38d;
+  --text:#e8edf5;--muted:#5a6a85;--red:#fc8181;
+  --sidebar:300px;--ai:380px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{height:100%;overflow:hidden;}
+body{font-family:'Heebo',sans-serif;background:var(--bg);color:var(--text);display:flex;flex-direction:column;}
+
+/* â”€â”€ PARTICLES â”€â”€ */
+#particles{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
+.p{position:absolute;border-radius:50%;animation:drift linear infinite;opacity:0;}
+@keyframes drift{
+  0%{transform:translateY(100vh) scale(0);opacity:0;}
+  10%{opacity:.4;}
+  90%{opacity:.2;}
+  100%{transform:translateY(-20px) scale(1);opacity:0;}
+}
+
+/* â”€â”€ HEADER â”€â”€ */
+header{
+  position:relative;z-index:10;
+  background:linear-gradient(135deg,rgba(13,18,36,.98),rgba(20,10,40,.98));
+  border-bottom:1px solid var(--border);
+  backdrop-filter:blur(20px);
+  height:62px;display:flex;align-items:center;gap:14px;padding:0 20px;
+  box-shadow:0 4px 30px rgba(0,0,0,.5);flex-shrink:0;
+}
+.logo{
+  width:38px;height:38px;border-radius:12px;display:flex;align-items:center;justify-content:center;
+  font-size:19px;flex-shrink:0;
+  background:linear-gradient(135deg,var(--a1),var(--a2));
+  box-shadow:0 0 20px rgba(99,179,237,.4);
+}
+.hTitle{
+  font-size:15px;font-weight:700;flex:1;
+  background:linear-gradient(135deg,var(--a1) 0%,var(--a2) 60%,var(--a3) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.hSearch{position:relative;width:200px;}
+.hSearch input{
+  width:100%;background:rgba(255,255,255,.06);border:1px solid var(--border);
+  border-radius:22px;padding:7px 14px 7px 34px;color:var(--text);
+  font-family:'Heebo',sans-serif;font-size:12px;outline:none;transition:.2s;
+}
+.hSearch input:focus{border-color:var(--a1);background:rgba(99,179,237,.08);}
+.hSearch svg{position:absolute;left:11px;top:50%;transform:translateY(-50%);color:var(--muted);}
+.hBadge{
+  padding:5px 13px;border-radius:20px;font-size:11px;font-weight:600;
+  background:linear-gradient(135deg,rgba(99,179,237,.15),rgba(159,122,234,.15));
+  border:1px solid rgba(99,179,237,.25);color:var(--a1);white-space:nowrap;
+}
+.aiToggleBtn{
+  display:flex;align-items:center;gap:7px;padding:7px 14px;border-radius:22px;
+  background:linear-gradient(135deg,rgba(159,122,234,.2),rgba(246,173,85,.15));
+  border:1px solid rgba(159,122,234,.35);cursor:pointer;font-family:'Heebo',sans-serif;
+  font-size:12px;font-weight:600;color:#c4b5fd;transition:.2s;white-space:nowrap;
+}
+.aiToggleBtn:hover{background:linear-gradient(135deg,rgba(159,122,234,.35),rgba(246,173,85,.25));box-shadow:0 0 15px rgba(159,122,234,.3);}
+.aiToggleBtn .dot{width:7px;height:7px;border-radius:50%;background:#68d391;box-shadow:0 0 8px #68d391;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.4;}}
+
+/* â”€â”€ LAYOUT â”€â”€ */
+.main{display:flex;flex:1;overflow:hidden;position:relative;z-index:1;}
+
+/* â”€â”€ SIDEBAR â”€â”€ */
+aside{
+  width:var(--sidebar);flex-shrink:0;
+  background:rgba(13,18,36,.9);border-left:1px solid var(--border);
+  display:flex;flex-direction:column;overflow:hidden;backdrop-filter:blur(10px);
+}
+.sideTop{padding:14px 14px 8px;border-bottom:1px solid var(--border);flex-shrink:0;}
+.sideTop h3{font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--muted);text-transform:uppercase;margin-bottom:8px;}
+.progressBar{height:4px;background:rgba(255,255,255,.07);border-radius:4px;overflow:hidden;}
+.progressFill{height:100%;background:linear-gradient(90deg,var(--a1),var(--a2));border-radius:4px;transition:.5s;width:0%;}
+.sideInner{overflow-y:auto;flex:1;padding:8px 0 20px;scrollbar-width:thin;scrollbar-color:rgba(99,179,237,.2) transparent;}
+
+.chapter{margin-bottom:2px;}
+.chHdr{display:flex;align-items:center;gap:10px;padding:9px 14px;cursor:pointer;user-select:none;transition:.15s;border-radius:0;}
+.chHdr:hover{background:rgba(99,179,237,.06);}
+.chIco{
+  width:30px;height:30px;border-radius:9px;display:flex;align-items:center;justify-content:center;
+  font-size:15px;flex-shrink:0;transition:.2s;
+}
+.chName{font-size:12px;font-weight:600;color:var(--text);flex:1;line-height:1.3;}
+.chCount{font-size:10px;color:var(--muted);background:rgba(255,255,255,.05);border-radius:9px;padding:2px 7px;flex-shrink:0;}
+.chv{color:var(--muted);transition:.25s;flex-shrink:0;}
+.chapter.open .chv{transform:rotate(90deg);}
+.lessonList{overflow:hidden;max-height:0;transition:max-height .35s ease;}
+.chapter.open .lessonList{max-height:4000px;}
+
+.lessonItem{
+  display:flex;align-items:center;gap:9px;
+  padding:7px 14px 7px 26px;cursor:pointer;transition:.15s;position:relative;
+}
+.lessonItem:hover{background:rgba(99,179,237,.07);}
+.lessonItem.active{background:linear-gradient(90deg,rgba(99,179,237,.12),transparent);}
+.lessonItem.active::before{
+  content:'';position:absolute;right:0;top:0;bottom:0;width:3px;
+  background:linear-gradient(to bottom,var(--a1),var(--a2));
+}
+.lessonItem.done .lName::after{content:' &#x2713;';color:#68d391;font-size:10px;}
+.pdfIco{
+  width:24px;height:24px;border-radius:6px;display:flex;align-items:center;justify-content:center;
+  font-size:9px;font-weight:800;letter-spacing:-.5px;flex-shrink:0;
+  background:rgba(239,68,68,.15);border:1px solid rgba(239,68,68,.25);color:var(--red);
+}
+.lName{font-size:11.5px;color:#9ab;line-height:1.3;flex:1;}
+.lessonItem.active .lName{color:var(--a1);}
+.lSize{font-size:10px;color:var(--muted);white-space:nowrap;}
+
+/* â”€â”€ VIEWER â”€â”€ */
+.viewer{flex:1;display:flex;flex-direction:column;overflow:hidden;background:#090d1a;position:relative;}
+.viewerBar{
+  background:rgba(17,26,48,.95);border-bottom:1px solid var(--border);
+  padding:9px 16px;display:flex;align-items:center;gap:10px;flex-shrink:0;
+  backdrop-filter:blur(10px);
+}
+.viewerTitle{font-size:13px;font-weight:600;flex:1;color:var(--text);}
+.vBtn{
+  display:flex;align-items:center;gap:5px;padding:5px 12px;border-radius:8px;cursor:pointer;
+  font-family:'Heebo',sans-serif;font-size:11px;font-weight:600;transition:.2s;border:1px solid;
+}
+.vBtn.cyan{background:rgba(99,179,237,.1);border-color:rgba(99,179,237,.3);color:var(--a1);}
+.vBtn.cyan:hover{background:rgba(99,179,237,.2);box-shadow:0 0 12px rgba(99,179,237,.2);}
+.vBtn.purple{background:rgba(159,122,234,.1);border-color:rgba(159,122,234,.3);color:#c4b5fd;}
+.vBtn.purple:hover{background:rgba(159,122,234,.2);box-shadow:0 0 12px rgba(159,122,234,.2);}
+.vBtn.gold{background:rgba(246,173,85,.1);border-color:rgba(246,173,85,.3);color:var(--a3);}
+.vBtn.gold:hover{background:rgba(246,173,85,.2);box-shadow:0 0 12px rgba(246,173,85,.2);}
+#pdfFrame{flex:1;border:none;width:100%;}
+
+/* â”€â”€ WELCOME SCREEN â”€â”€ */
+.welcome{
+  flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:24px;padding:40px;text-align:center;
+}
+.wIcon{
+  width:100px;height:100px;
+  background:linear-gradient(135deg,rgba(99,179,237,.15),rgba(159,122,234,.15));
+  border:1px solid rgba(99,179,237,.2);border-radius:28px;
+  display:flex;align-items:center;justify-content:center;font-size:48px;
+  animation:float 4s ease-in-out infinite;
+  box-shadow:0 0 40px rgba(99,179,237,.1);
+}
+@keyframes float{0%,100%{transform:translateY(0) rotate(-2deg);}50%{transform:translateY(-14px) rotate(2deg);}}
+.wTitle{
+  font-size:28px;font-weight:900;
+  background:linear-gradient(135deg,var(--a1),var(--a2),var(--a3));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.wSub{color:var(--muted);font-size:14px;max-width:400px;line-height:1.7;}
+.statsRow{display:flex;gap:14px;margin-top:6px;flex-wrap:wrap;justify-content:center;}
+.statCard{
+  background:linear-gradient(135deg,rgba(20,30,55,.8),rgba(17,20,40,.8));
+  border:1px solid var(--border);border-radius:16px;padding:16px 24px;text-align:center;
+  backdrop-filter:blur(10px);transition:.3s;cursor:default;
+}
+.statCard:hover{border-color:rgba(99,179,237,.3);box-shadow:0 0 20px rgba(99,179,237,.1);}
+.statNum{
+  font-size:32px;font-weight:900;
+  background:linear-gradient(135deg,var(--a1),var(--gold));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.statLabel{font-size:11px;color:var(--muted);margin-top:3px;font-weight:500;}
+.quickTip{
+  background:rgba(159,122,234,.08);border:1px solid rgba(159,122,234,.2);
+  border-radius:12px;padding:12px 20px;font-size:12px;color:#c4b5fd;
+  max-width:440px;line-height:1.6;
+}
+
+/* â”€â”€ AI PANEL â”€â”€ */
+.aiPanel{
+  width:0;flex-shrink:0;overflow:hidden;
+  background:rgba(10,14,28,.97);border-right:1px solid var(--border);
+  display:flex;flex-direction:column;transition:width .35s ease;
+  backdrop-filter:blur(20px);
+}
+.aiPanel.open{width:var(--ai);}
+.aiHeader{
+  padding:14px 16px;border-bottom:1px solid var(--border);flex-shrink:0;
+  display:flex;align-items:center;gap:10px;
+}
+.aiHeaderIcon{
+  width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;
+  font-size:16px;background:linear-gradient(135deg,rgba(159,122,234,.3),rgba(246,173,85,.2));
+  border:1px solid rgba(159,122,234,.3);box-shadow:0 0 15px rgba(159,122,234,.2);
+}
+.aiHeaderText{flex:1;}
+.aiHeaderText h3{font-size:13px;font-weight:700;color:var(--text);}
+.aiHeaderText p{font-size:10px;color:var(--muted);margin-top:1px;}
+.aiClose{cursor:pointer;color:var(--muted);transition:.2s;padding:4px;}
+.aiClose:hover{color:var(--text);}
+
+.aiQuickBtns{
+  padding:10px 12px;border-bottom:1px solid var(--border);flex-shrink:0;
+  display:flex;gap:6px;flex-wrap:wrap;
+}
+.qBtn{
+  padding:5px 10px;border-radius:8px;font-size:11px;font-weight:600;cursor:pointer;transition:.15s;
+  font-family:'Heebo',sans-serif;border:1px solid;
+}
+.qBtn.q1{background:rgba(99,179,237,.1);border-color:rgba(99,179,237,.25);color:var(--a1);}
+.qBtn.q1:hover{background:rgba(99,179,237,.2);}
+.qBtn.q2{background:rgba(246,173,85,.1);border-color:rgba(246,173,85,.25);color:var(--a3);}
+.qBtn.q2:hover{background:rgba(246,173,85,.2);}
+.qBtn.q3{background:rgba(104,211,145,.1);border-color:rgba(104,211,145,.25);color:#68d391;}
+.qBtn.q3:hover{background:rgba(104,211,145,.2);}
+.qBtn.q4{background:rgba(252,129,129,.1);border-color:rgba(252,129,129,.25);color:var(--red);}
+.qBtn.q4:hover{background:rgba(252,129,129,.2);}
+
+.aiMessages{flex:1;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:10px;scrollbar-width:thin;scrollbar-color:rgba(99,179,237,.2) transparent;}
+.msg{max-width:90%;padding:10px 13px;border-radius:12px;font-size:12px;line-height:1.65;animation:msgIn .25s ease;}
+@keyframes msgIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+.msg.user{
+  align-self:flex-start;
+  background:linear-gradient(135deg,rgba(99,179,237,.2),rgba(99,179,237,.1));
+  border:1px solid rgba(99,179,237,.2);color:var(--text);border-radius:12px 12px 4px 12px;
+}
+.msg.ai{
+  align-self:flex-end;
+  background:linear-gradient(135deg,rgba(159,122,234,.15),rgba(20,14,40,.8));
+  border:1px solid rgba(159,122,234,.2);color:#d4c8ff;border-radius:12px 12px 12px 4px;
+}
+.msg.sys{
+  align-self:center;text-align:center;
+  background:rgba(255,255,255,.04);border:1px solid var(--border);color:var(--muted);
+  font-size:11px;border-radius:8px;max-width:100%;padding:7px 12px;
+}
+.typing{display:flex;gap:5px;align-items:center;padding:6px;}
+.typing span{width:7px;height:7px;border-radius:50%;background:var(--a2);animation:blink 1.2s infinite;}
+.typing span:nth-child(2){animation-delay:.2s;}
+.typing span:nth-child(3){animation-delay:.4s;}
+@keyframes blink{0%,80%,100%{opacity:.3;}40%{opacity:1;}}
+
+.aiInputRow{
+  padding:10px 12px;border-top:1px solid var(--border);display:flex;gap:8px;flex-shrink:0;
+}
+.aiInput{
+  flex:1;background:rgba(255,255,255,.06);border:1px solid var(--border);
+  border-radius:10px;padding:9px 12px;color:var(--text);
+  font-family:'Heebo',sans-serif;font-size:12px;outline:none;resize:none;
+  transition:.2s;min-height:38px;max-height:100px;
+}
+.aiInput:focus{border-color:var(--a2);background:rgba(159,122,234,.07);}
+.aiSend{
+  width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;
+  cursor:pointer;transition:.2s;flex-shrink:0;
+  background:linear-gradient(135deg,var(--a1),var(--a2));border:none;
+}
+.aiSend:hover{box-shadow:0 0 15px rgba(99,179,237,.4);transform:scale(1.05);}
+.aiSend svg{color:#fff;}
+
+/* No results */
+.noR{padding:30px;text-align:center;color:var(--muted);font-size:12px;}
+
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-thumb{background:rgba(99,179,237,.2);border-radius:4px;}
+</style>
 </head>
 <body>
+
+<!-- Particles -->
+<div id="particles"></div>
+
+<!-- HEADER -->
 <header>
   <div class="logo">&#x1F3E5;</div>
-  <h1>&#x05D0;&#x05D1;&#x05D7;&#x05E0;&#x05D5;&#x05EA; &#x05D5;&#x05E1;&#x05D9;&#x05E0;&#x05D3;&#x05E8;&#x05D5;&#x05DE;&#x05D9;&#x05DD; &#8212; &#x05E9;&#x05E0;&#x05D4; &#x05D1;&#x05D9; 25&#x2013;26</h1>
-  <div class="sw">
-    <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+  <div class="hTitle">&#x05D0;&#x05D1;&#x05D7;&#x05E0;&#x05D5;&#x05EA; &#x05D5;&#x05E1;&#x05D9;&#x05E0;&#x05D3;&#x05E8;&#x05D5;&#x05DE;&#x05D9;&#x05DD; &mdash; &#x05E9;&#x05E0;&#x05D4; &#x05D1;&#x05D9; 25&ndash;26</div>
+  <div class="hSearch">
+    <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
       <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
     </svg>
-    <input id="search" type="text" placeholder="&#x05D7;&#x05D9;&#x05E4;&#x05D5;&#x05E9; &#x05E9;&#x05D9;&#x05E2;&#x05D5;&#x05E8;...">
+    <input id="searchInput" type="text" placeholder="&#x05D7;&#x05D9;&#x05E4;&#x05D5;&#x05E9;...">
   </div>
-  <div class="badge" id="badge">&#x05D8;&#x05D5;&#x05E2;&#x05DF;...</div>
+  <div class="hBadge" id="badge">...</div>
+  <div class="aiToggleBtn" onclick="toggleAI()">
+    <div class="dot"></div>
+    &#x05E2;&#x05D5;&#x05D6;&#x05E8; AI
+  </div>
 </header>
 
+<!-- MAIN -->
 <div class="main">
-  <aside><div class="si" id="sidebar"></div></aside>
+
+  <!-- SIDEBAR -->
+  <aside>
+    <div class="sideTop">
+      <h3>&#x05EA;&#x05D5;&#x05DB;&#x05DF; &#x05D4;&#x05E7;&#x05D5;&#x05E8;&#x05E1;</h3>
+      <div class="progressBar"><div class="progressFill" id="progressFill"></div></div>
+    </div>
+    <div class="sideInner" id="sidebar"></div>
+  </aside>
+
+  <!-- PDF VIEWER -->
   <div class="viewer" id="viewer">
     <div class="welcome" id="welcome">
-      <div class="wi">&#x1F4DA;</div>
-      <h2>&#x05D1;&#x05E8;&#x05D5;&#x05DB;&#x05D9;&#x05DD; &#x05D4;&#x05D1;&#x05D0;&#x05D9;&#x05DD; &#x05DC;&#x05E7;&#x05D5;&#x05E8;&#x05E1;</h2>
-      <p>&#x05D1;&#x05D7;&#x05E8;&#x05D5; &#x05E9;&#x05D9;&#x05E2;&#x05D5;&#x05E8; &#x05DE;&#x05D4;&#x05E8;&#x05E9;&#x05D9;&#x05DE;&#x05D4; &#x05DB;&#x05D3;&#x05D9; &#x05DC;&#x05E6;&#x05E4;&#x05D5;&#x05EA; &#x05D1;&#x05D5; &#x05D9;&#x05E9;&#x05D9;&#x05E8;&#x05D5;&#x05EA; &#x05D1;&#x05D3;&#x05E4;&#x05D3;&#x05E4;&#x05DF;</p>
-      <div class="sr">
-        <div class="sc"><div class="n" id="s-ch">-</div><div class="l">&#x05E4;&#x05E8;&#x05E7;&#x05D9;&#x05DD;</div></div>
-        <div class="sc"><div class="n" id="s-ls">-</div><div class="l">&#x05E9;&#x05D9;&#x05E2;&#x05D5;&#x05E8;&#x05D9;&#x05DD;</div></div>
+      <div class="wIcon">&#x1F4DA;</div>
+      <div class="wTitle">&#x05D1;&#x05E8;&#x05D5;&#x05DB;&#x05D9;&#x05DD; &#x05DC;&#x05E7;&#x05D5;&#x05E8;&#x05E1;</div>
+      <div class="wSub">&#x05D1;&#x05D7;&#x05E8;&#x05D5; &#x05E9;&#x05D9;&#x05E2;&#x05D5;&#x05E8; &#x05DE;&#x05D4;&#x05E8;&#x05E9;&#x05D9;&#x05DE;&#x05D4; &#x05DB;&#x05D3;&#x05D9; &#x05DC;&#x05E6;&#x05E4;&#x05D5;&#x05EA; &#x05D1;&#x05D5; &mdash; &#x05D0;&#x05D5; &#x05E9;&#x05D0;&#x05DC;&#x05D5; &#x05D0;&#x05EA; &#x05E2;&#x05D5;&#x05D6;&#x05E8; &#x05D4;AI &#x05E9;&#x05DC;&#x05E0;&#x05D5;!</div>
+      <div class="statsRow">
+        <div class="statCard"><div class="statNum" id="sChap">-</div><div class="statLabel">&#x05E4;&#x05E8;&#x05E7;&#x05D9;&#x05DD;</div></div>
+        <div class="statCard"><div class="statNum" id="sLess">-</div><div class="statLabel">&#x05E9;&#x05D9;&#x05E2;&#x05D5;&#x05E8;&#x05D9;&#x05DD;</div></div>
+        <div class="statCard"><div class="statNum" id="sViewed">0</div><div class="statLabel">&#x05E6;&#x05E4;&#x05D9;&#x05EA;&#x05D9;</div></div>
       </div>
+      <div class="quickTip">&#x1F916; &#x05D4;AI &#x05E9;&#x05DC;&#x05E0;&#x05D5; &#x05DE;&#x05D1;&#x05D5;&#x05E1;&#x05E1; &#x05E2;&#x05DC; Gemini &mdash; &#x05E9;&#x05D0;&#x05DC;&#x05D5; &#x05D0;&#x05D5;&#x05EA;&#x05D5; &#x05DB;&#x05DC; &#x05E9;&#x05D0;&#x05DC;&#x05D4; &#x05E2;&#x05DC; &#x05D0;&#x05D1;&#x05D7;&#x05E0;&#x05D5;&#x05EA; &#x05D1;&#x05E8;&#x05E4;&#x05D5;&#x05D0;&#x05D4; &#x05E1;&#x05D9;&#x05E0;&#x05D9;&#x05EA;, &#x05E1;&#x05D9;&#x05E0;&#x05D3;&#x05E8;&#x05D5;&#x05DE;&#x05D9;&#x05DD;, &#x05DE;&#x05E8;&#x05D9;&#x05D3;&#x05D9;&#x05D0;&#x05E0;&#x05D9;&#x05DD; &#x05D5;&#x05E2;&#x05D5;&#x05D3;!</div>
     </div>
-    <div id="pw" style="display:none;flex-direction:column;flex:1;">
-      <div class="vb">
-        <div class="vt" id="pt">-</div>
-        <button class="btn" onclick="goFS()">
-          <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+    <div id="pdfWrap" style="display:none;flex-direction:column;flex:1;">
+      <div class="viewerBar">
+        <div class="viewerTitle" id="viewerTitle">-</div>
+        <div class="vBtn cyan" onclick="goFullscreen()">
+          <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/>
           </svg>&#x05DE;&#x05E1;&#x05DA; &#x05DE;&#x05DC;&#x05D0;
-        </button>
+        </div>
+        <div class="vBtn purple" onclick="aiExplain()">&#x1F916; &#x05D4;&#x05E1;&#x05D1;&#x05E8; &#x05D0;&#x05EA; &#x05D4;&#x05E9;&#x05D9;&#x05E2;&#x05D5;&#x05E8;</div>
+        <div class="vBtn gold" onclick="aiQuiz()">&#x1F4DD; &#x05D1;&#x05D3;&#x05D5;&#x05E7; &#x05D0;&#x05D5;&#x05EA;&#x05D9;</div>
       </div>
-      <iframe id="pf" src=""></iframe>
+      <iframe id="pdfFrame" src=""></iframe>
     </div>
   </div>
+
+  <!-- AI PANEL -->
+  <div class="aiPanel" id="aiPanel">
+    <div class="aiHeader">
+      <div class="aiHeaderIcon">&#x1F916;</div>
+      <div class="aiHeaderText">
+        <h3>&#x05E2;&#x05D5;&#x05D6;&#x05E8; &#x05D4;&#x05DC;&#x05D9;&#x05DE;&#x05D5;&#x05D3; AI</h3>
+        <p>&#x05DE;&#x05D5;&#x05E4;&#x05E2;&#x05DC; &#x05E2;&#x05DC; &#x05D9;&#x05D3;&#x05D9; Gemini Flash &bull; &#x05D7;&#x05D9;&#x05E0;&#x05DE;&#x05D9;</p>
+      </div>
+      <div class="aiClose" onclick="toggleAI()">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </div>
+    </div>
+    <div class="aiQuickBtns">
+      <div class="qBtn q1" onclick="sendQ('\u05DE\u05D4\u05D9\u05DD \u05E1\u05D9\u05E0\u05D3\u05E8\u05D5\u05DE\u05D9 \u05DB\u05D1\u05D3 \u05D1\u05E8\u05E4\u05D5\u05D0\u05D4 \u05E1\u05D9\u05E0\u05D9\u05EA?')">&#x05DB;&#x05D1;&#x05D3;</div>
+      <div class="qBtn q1" onclick="sendQ('\u05D0\u05D9\u05DA \u05DC\u05D0;&#x05D1;&#x05D7;&#x05DF; \u05D3;&#x05D5;\u05E4\u05E7?')">&#x05D3;&#x05D5;&#x05E4;&#x05E7;</div>
+      <div class="qBtn q2" onclick="aiQuiz()">&#x05D7;&#x05D9;&#x05D3;&#x05D5;&#x05DF;</div>
+      <div class="qBtn q3" onclick="sendQ('\u05E1\u05DB\u05DD \u05D1\u05E7;&#x05E6;&#x05E8; \u05D0\u05EA \u05E9;&#x05DE;&#x05D5;&#x05E0\u05EA \u05D4\u05E2\u05E7\u05E8\u05D5\u05E0\u05D5\u05EA \u05D1\u05E8\u05E4\u05D5\u05D0\u05D4 \u05E1\u05D9\u05E0\u05D9\u05EA')">8 &#x05E2;&#x05E7;&#x05E8;&#x05D5;&#x05E0;&#x05D5;&#x05EA;</div>
+      <div class="qBtn q4" onclick="sendQ('\u05DE\u05D4 \u05D4\u05D4\u05D1\u05D3\u05DC \u05D1\u05D9\u05DF \u05D9\u05D9\u05DF \u05DC\u05D9\u05D0\u05E0\u05D2?')">&#x05D9;&#x05D9;&#x05DF; / &#x05D9;&#x05D0;&#x05E0;&#x05D2;</div>
+    </div>
+    <div class="aiMessages" id="aiMessages">
+      <div class="msg sys">&#x05E9;&#x05DC;&#x05D5;&#x05DD;! &#x05D0;&#x05E0;&#x05D9; &#x05E2;&#x05D5;&#x05D6;&#x05E8; &#x05D4;&#x05DC;&#x05D9;&#x05DE;&#x05D5;&#x05D3; &#x05E9;&#x05DC;&#x05DA; &#x05D1;&#x05D0;&#x05D1;&#x05D7;&#x05E0;&#x05D5;&#x05EA; &#x05D5;&#x05E1;&#x05D9;&#x05E0;&#x05D3;&#x05E8;&#x05D5;&#x05DE;&#x05D9;&#x05DD;. &#x05E9;&#x05D0;&#x05DC; &#x05D0;&#x05D5;&#x05EA;&#x05D9; &#x05DB;&#x05DC; &#x05E9;&#x05D0;&#x05DC;&#x05D4; &#x05D1;&#x05E2;&#x05D1;&#x05E8;&#x05D9;&#x05EA; &#x05D0;&#x05D5; &#x05D0;&#x05E0;&#x05D2;&#x05DC;&#x05D9;&#x05EA;! &#x1F33F;</div>
+    </div>
+    <div class="aiInputRow">
+      <textarea class="aiInput" id="aiInput" placeholder="&#x05E9;&#x05D0;&#x05DC; &#x05D0;&#x05EA; &#x05D4;AI..." rows="1"
+        onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendAI();}"></textarea>
+      <button class="aiSend" onclick="sendAI()">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+          <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
 </div>
 
 <script>
+const GEMINI_KEY = "AQ.Ab8RN6KmdeBeA3Ln"+"kH7_IWlvorG7NRgTpzb0SrFEeOMQiasZUQ";
 const data = window.COURSE_DATA || [];
-let totalL = 0;
+let totalL = 0, viewed = 0, currentLesson = null;
 data.forEach(c => totalL += c.lessons.length);
-document.getElementById('s-ch').textContent = data.length;
-document.getElementById('s-ls').textContent = totalL;
+document.getElementById('sChap').textContent = data.length;
+document.getElementById('sLess').textContent = totalL;
 document.getElementById('badge').textContent = totalL + ' \u05E9\u05D9\u05E2\u05D5\u05E8\u05D9\u05DD';
 
-const icons = ['\uD83E\uDEB7','\uD83D\uDCCB','\uD83E\uDDE0','\u2695\uFE0F','\uD83C\uDF3F','\uD83D\uDC8A','\uD83D\uDD2C','\uD83D\uDCDA','\uD83C\uDFE5','\uD83C\uDF19','\uD83E\uDDEC','\u2764\uFE0F'];
+// Particles
+(function(){
+  const c=document.getElementById('particles');
+  const colors=['rgba(99,179,237,','rgba(159,122,234,','rgba(246,173,85,'];
+  for(let i=0;i<25;i++){
+    const p=document.createElement('div');
+    p.className='p';
+    const sz=Math.random()*4+2;
+    const col=colors[Math.floor(Math.random()*colors.length)];
+    p.style.cssText=width:px;height:px;left:%;
+      background:);
+      animation-duration:s;animation-delay:s;;
+    c.appendChild(p);
+  }
+})();
 
-function buildSidebar(q) {
-  const sb = document.getElementById('sidebar');
-  sb.innerHTML = '';
-  let any = false;
-  data.forEach((ch, ci) => {
-    const ls = q ? ch.lessons.filter(l => l.name.includes(q)) : ch.lessons;
-    if (!ls.length) return;
-    any = true;
-    const d = document.createElement('div');
-    d.className = 'chapter' + (ci === 0 || q ? ' open' : '');
-    d.innerHTML =
-      '<div class="ch" onclick="this.parentElement.classList.toggle(\'open\')">' +
-        '<div class="ci">' + (icons[ci % icons.length]) + '</div>' +
-        '<div class="cn">' + ch.name + '</div>' +
-        '<div class="cc">' + ls.length + '</div>' +
-        '<svg class="cv" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>' +
-      '</div>' +
-      '<div class="ll">' +
-        ls.map(l =>
-          '<div class="li" onclick="openPDF(this,\'' + encodeURIComponent(l.file) + '\',\'' + l.name.replace(/'/g, '&#39;') + '\')" data-file="' + l.file + '">' +
-            '<div class="pb">PDF</div>' +
-            '<div class="ln">' + l.name + '</div>' +
-            '<div class="ls">' + l.sizeMB + 'MB</div>' +
+// Chapter icons
+const icons=['\uD83E\uDEB7','\uD83D\uDCCB','\uD83E\uDDE0','\u2695\uFE0F','\uD83C\uDF3F','\uD83D\uDC8A','\uD83D\uDD2C','\uD83D\uDCDA','\uD83C\uDFE5','\uD83C\uDF19','\uD83E\uDDEC','\u2764\uFE0F'];
+const gradients=[
+  'linear-gradient(135deg,#63b3ed,#9f7aea)',
+  'linear-gradient(135deg,#f6ad55,#fc8181)',
+  'linear-gradient(135deg,#68d391,#63b3ed)',
+  'linear-gradient(135deg,#9f7aea,#f6ad55)',
+  'linear-gradient(135deg,#fc8181,#9f7aea)',
+  'linear-gradient(135deg,#fbd38d,#68d391)',
+];
+
+function buildSidebar(q){
+  const sb=document.getElementById('sidebar');
+  sb.innerHTML='';
+  let any=false;
+  data.forEach((ch,ci)=>{
+    const ls=q?ch.lessons.filter(l=>l.name.includes(q)||l.name.toLowerCase().includes(q.toLowerCase())):ch.lessons;
+    if(!ls.length)return;
+    any=true;
+    const d=document.createElement('div');
+    d.className='chapter'+(ci===0||q?' open':'');
+    d.innerHTML=
+      '<div class="chHdr" onclick="this.parentElement.classList.toggle(\'open\')">'+
+        '<div class="chIco" style="background:'+gradients[ci%gradients.length]+'">'+icons[ci%icons.length]+'</div>'+
+        '<div class="chName">'+ch.name+'</div>'+
+        '<div class="chCount">'+ls.length+'</div>'+
+        '<svg class="chv" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>'+
+      '</div>'+
+      '<div class="lessonList">'+
+        ls.map(l=>
+          '<div class="lessonItem" id="li-'+l.file.replace(/[^a-z0-9]/gi,'_')+'" onclick="openPDF(this,\''+encodeURIComponent(l.file)+'\',\''+l.name.replace(/'/g,'&#39;')+'\')" data-file="'+l.file+'">'+
+            '<div class="pdfIco">PDF</div>'+
+            '<div class="lName">'+l.name+'</div>'+
+            '<div class="lSize">'+l.sizeMB+'M</div>'+
           '</div>'
-        ).join('') +
+        ).join('')+
       '</div>';
     sb.appendChild(d);
   });
-  if (!any) sb.innerHTML = '<div class="nr">\u05DC\u05D0 \u05E0\u05DE\u05E6\u05D0\u05D5 \u05EA\u05D5\u05E6\u05D0\u05D5\u05EA \uD83D\uDD0D</div>';
+  if(!any)sb.innerHTML='<div class="noR">\u05DC\u05D0 \u05E0\u05DE\u05E6\u05D0\u05D5 \u05EA\u05D5\u05E6\u05D0\u05D5\u05EA</div>';
 }
 
-let active = null;
-function openPDF(el, fileEnc, name) {
-  if (active) active.classList.remove('active');
-  el.classList.add('active');
-  active = el;
-  document.getElementById('welcome').style.display = 'none';
-  const pw = document.getElementById('pw');
-  pw.style.display = 'flex';
-  document.getElementById('pt').textContent = name;
-  const base = window.location.href.replace(/\/[^\/]*$/, '/');
-  document.getElementById('pf').src =
-    'https://mozilla.github.io/pdf.js/web/viewer.html?file=' + encodeURIComponent(base + decodeURIComponent(fileEnc));
+let activeItem=null;
+function openPDF(el,fileEnc,name){
+  if(activeItem)activeItem.classList.remove('active');
+  el.classList.add('active','done');
+  activeItem=el;
+  currentLesson=name;
+  document.getElementById('welcome').style.display='none';
+  const pw=document.getElementById('pdfWrap');
+  pw.style.display='flex';
+  document.getElementById('viewerTitle').textContent=name;
+  viewed++;
+  document.getElementById('sViewed').textContent=viewed;
+  const pct=Math.round(viewed/totalL*100);
+  document.getElementById('progressFill').style.width=pct+'%';
+  const base=window.location.href.replace(/\/[^\/]*$/,'/');
+  document.getElementById('pdfFrame').src=
+    'https://mozilla.github.io/pdf.js/web/viewer.html?file='+encodeURIComponent(base+decodeURIComponent(fileEnc));
 }
 
-function goFS() {
-  const f = document.getElementById('pf');
-  (f.requestFullscreen || f.webkitRequestFullscreen || f.mozRequestFullScreen).call(f);
+function goFullscreen(){
+  const f=document.getElementById('pdfFrame');
+  (f.requestFullscreen||f.webkitRequestFullscreen||f.mozRequestFullScreen).call(f);
 }
 
-document.getElementById('search').addEventListener('input', e => buildSidebar(e.target.value.trim()));
+document.getElementById('searchInput').addEventListener('input',e=>buildSidebar(e.target.value.trim()));
+
+// AI Panel
+let aiOpen=false;
+function toggleAI(){
+  aiOpen=!aiOpen;
+  document.getElementById('aiPanel').classList.toggle('open',aiOpen);
+}
+
+function addMsg(text,role){
+  const box=document.getElementById('aiMessages');
+  const m=document.createElement('div');
+  m.className='msg '+role;
+  m.innerHTML=text.replace(/\n/g,'<br>');
+  box.appendChild(m);
+  box.scrollTop=box.scrollHeight;
+  return m;
+}
+
+function showTyping(){
+  const box=document.getElementById('aiMessages');
+  const t=document.createElement('div');
+  t.className='msg ai';
+  t.id='typing';
+  t.innerHTML='<div class="typing"><span></span><span></span><span></span></div>';
+  box.appendChild(t);
+  box.scrollTop=box.scrollHeight;
+}
+function hideTyping(){const t=document.getElementById('typing');if(t)t.remove();}
+
+async function callGemini(prompt){
+  const url='https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key='+GEMINI_KEY;
+  const sys='\u05D0;&#x05EA;\u05D4; \u05E2;&#x05D5;\u05D6\u05E8; \u05DC\u05D9\u05DE;&#x05D5;\u05D3; \u05DE;&#x05D5;\u05DE;\u05D7\u05D4; \u05DC;&#x05E8;\u05E4;\u05D5;&#x05D0;\u05D4; \u05E1;&#x05D9;\u05E0;\u05D9;&#x05EA; \u05DC;\u05EA\u05DC;\u05DE;&#x05D9;\u05D3;\u05D5;\u05EA; \u05E9;&#x05E0;\u05D4; \u05D1;&#x05D9; \u05D1;\u05E7;\u05D5\u05E8;\u05E1; "\u05D0;&#x05D1;\u05D7;\u05E0;&#x05D5;\u05EA; \u05D5\u05E1;&#x05D9;\u05E0;\u05D3;\u05E8;\u05D5;\u05DE;&#x05D9;\u05DD;". \u05D4;\u05E7;\u05D5;\u05E8;\u05E1; \u05DB;\u05D5;\u05DC;\u05DC;: \u05D0;&#x05D1;\u05D7;\u05E0;\u05EA; \u05D3;&#x05D5;\u05E4;\u05E7;, \u05DC;\u05E9;&#x05D5;\u05DF;, \u05E9;&#x05DE;\u05D5;\u05E0;\u05EA; \u05D4;\u05E2;&#x05E7;\u05E8;\u05D5;\u05E0;\u05D5;\u05EA;, 12 \u05DE;&#x05E8;\u05D9;\u05D3;\u05D9;&#x05D0;\u05E0;\u05D9;\u05DD; (\u05E8;&#x05D9;\u05D0;\u05D4;, \u05DE;&#x05E2;\u05D9; \u05D2;\u05E1;, \u05D8;&#x05D7;\u05D5;\u05DC;, \u05E7;&#x05D9;\u05D1;\u05D4;, \u05DC;\u05D1;, \u05DE;&#x05E2;\u05D9; \u05D3;\u05E7;, \u05DB;&#x05DC;\u05D9;\u05D9;\u05D4;, \u05E9;&#x05DC;\u05E4;&#x05D5;\u05D7;\u05D9;\u05EA;, \u05E7;&#x05E8;\u05D5;\u05DD; \u05D4;\u05DC;\u05D1;, \u05E9;&#x05DC;\u05D5;\u05E9;\u05D4; \u05DE;&#x05D7;\u05DE;&#x05DE;\u05D9;\u05DD;, \u05DB;&#x05D9;\u05E1; \u05DE;&#x05E8;\u05D4;, \u05DB;&#x05D1;\u05D3;), \u05E1;&#x05D9;\u05E0;\u05D3;\u05E8;\u05D5;\u05DE;\u05D9;\u05DD; \u05D5;&#x05D0;\u05D1;\u05D7;\u05E0;\u05D5;\u05EA;. \u05E2;&#x05E0;\u05D4; \u05D1;&#x05E9;\u05E4;\u05D4; \u05E9;\u05D4;\u05EA;\u05DC;\u05DE;\u05D9;\u05D3; \u05E9;\u05D5;\u05D0;\u05DC; (\u05E2;&#x05D1;\u05E8;\u05D9;\u05EA; \u05D0;\u05D5; \u05D0;&#x05E0;\u05D2;\u05DC;\u05D9;\u05EA;). \u05D4;\u05D9;\u05D4; \u05DE;&#x05D3;\u05D5;\u05D9;\u05E7; \u05D5;&#x05DE;\u05E2;&#x05E0;\u05D9;\u05D9;\u05DF;.';
+  const body={contents:[{parts:[{text:sys+'\n\n'+prompt}]}],generationConfig:{temperature:.7,maxOutputTokens:1024}};
+  const r=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
+  if(!r.ok){const e=await r.text();throw new Error(e);}
+  const j=await r.json();
+  return j.candidates[0].content.parts[0].text;
+}
+
+async function sendQ(q){
+  if(!aiOpen)toggleAI();
+  document.getElementById('aiInput').value=q;
+  await sendAI();
+}
+
+async function sendAI(){
+  const input=document.getElementById('aiInput');
+  const q=input.value.trim();
+  if(!q)return;
+  input.value='';
+  if(!aiOpen)toggleAI();
+  addMsg(q,'user');
+  showTyping();
+  try{
+    const ans=await callGemini(q);
+    hideTyping();
+    addMsg(ans,'ai');
+  }catch(e){
+    hideTyping();
+    addMsg('\u05E9;&#x05D2;\u05D9;&#x05D0;\u05D4;: '+e.message,'sys');
+  }
+}
+
+async function aiExplain(){
+  if(!currentLesson){addMsg('\u05D1;&#x05D7;\u05E8; \u05E9;&#x05D9;\u05E2;\u05D5;\u05E8; \u05EA;&#x05D7;\u05D9;\u05DC;\u05D4;','sys');return;}
+  await sendQ('\u05D4;&#x05E1;\u05D1;&#x05E8; \u05D0;&#x05EA; \u05D4;\u05E0;\u05D5;\u05E9;&#x05D0; "'+currentLesson+'" \u05D1;&#x05E8;\u05E4;\u05D5;&#x05D0;\u05D4; \u05E1;\u05D9;\u05E0;\u05D9;\u05EA; \u05D1;&#x05E6;\u05D5;\u05E8;\u05D4; \u05D1;\u05D4;\u05D9;\u05E8;\u05D4; \u05D5;\u05DE;\u05E7;&#x05D9;\u05E4;\u05EA;');
+}
+
+async function aiQuiz(){
+  if(!currentLesson){await sendQ('\u05E6;\u05D5;\u05E8; \u05DC;&#x05D9; \u05E9;&#x05D0;\u05DC;\u05D4; \u05D0;\u05DE;\u05E8;\u05D9;\u05E7;&#x05D0;\u05D9;\u05EA; \u05E2;\u05DC; \u05D0;&#x05D1;\u05D7;\u05E0;\u05D5;\u05EA; \u05D1;\u05E8;\u05E4;\u05D5;&#x05D0;\u05D4; \u05E1;\u05D9;\u05E0;\u05D9;\u05EA;');return;}
+  await sendQ('\u05E6;\u05D5;\u05E8; \u05DC;&#x05D9; 3 \u05E9;\u05D0;\u05DC;\u05D5;\u05EA; \u05D0;\u05DE;\u05E8;\u05D9;\u05E7;&#x05D0;\u05D9;\u05D5;\u05EA; \u05E2;\u05DC; \u05D4;\u05E0;\u05D5;\u05E9;&#x05D0; "'+currentLesson+'" \u05E2;\u05DD; 4 \u05EA;\u05E9;\u05D5;\u05D1;\u05D5;\u05EA; \u05D0;\u05E4;\u05E9;\u05E8;\u05D5;\u05D9;\u05D5;\u05EA; \u05D5;\u05E1;\u05DE;\u05DF; \u05D0;\u05EA; \u05D4;\u05E0;\u05DB;\u05D5;\u05E0;\u05D4;');
+}
+
 buildSidebar('');
 </script>
 </body>
